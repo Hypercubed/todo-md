@@ -1,0 +1,26 @@
+{
+  "name": "todo.js",
+  "version": "0.0.1",
+  "description": "todo",
+  "bin": {
+    "todo": "./bin/todo.js"
+  },
+  "dependencies": {
+    "commander": "~1.2.0",
+    "lazy": "~1.0.11",
+    "byline": "~2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {},
+  "keywords": [
+    "node"
+  ],
+  "author": "J. Harshbarger",
+  "license": "MIT",
+  "bugs": {
+    "url": "coming soon"
+  }
+}
