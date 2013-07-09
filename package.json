@@ -3,12 +3,10 @@
   "version": "0.0.1",
   "description": "todo",
   "bin": {
-    "todo": "./bin/todo.js"
+    "todo": "./bin/todo"
   },
   "dependencies": {
-    "commander": "~1.2.0",
-    "lazy": "~1.0.11",
-    "byline": "~2.0.3"
+    "autocmdr": "0.0.0"
   },
   "devDependencies": {},
   "scripts": {
