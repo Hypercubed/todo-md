@@ -9,7 +9,7 @@ Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-ta
 
 # Usage
 
-# Install autocmdr globally (actually not yet)
+# Install todo-md globally
 
 
 	npm install -g Hypercubed/todo-md
@@ -25,7 +25,7 @@ Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-ta
     nl [options]           		Displays all the lines in todo list with line numbers
     do [options] <index>   		Marks task as done
     undo [options] <index> 		Marks task as not done
-    add [options] <text_to_add> Adds text_to_add to your todo file on its own line.
+    add [options] <text_to_add> 	Adds text_to_add to your todo file on its own line.
     rm [options] <index>   		Remove a task
 
 	Options:
@@ -33,6 +33,10 @@ Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-ta
     -h, --help    output usage information
     -d, --debug   enable debugger
     -g, --global  use global todo list
+
+# Todo
+
+See todo.md (managed using [todo-md](https://github.com/Hypercubed/todo-md))
 
 # License
 
