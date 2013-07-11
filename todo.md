@@ -1,36 +1,45 @@
-Options:
-	[ ] -i to set input file (default: cwd+todo.md), use - for stdin
-	[ ] -o to set ouput file (default: cwd+todo.md), use - for stdin
-	[X] -g to set input file to global default (default: npm directory+todo.md)
-	[ ] -  to toggle console (stderr) echo
+# Todo list for [todo-md](https://github.com/Hypercubed/todo-md)
 
-Commands:
-	[X] add <string> to add <string> as a task
-	[ ] add <string> <line> to add <string> at line <line>
-	[X] cat to list without changes (default is same as cat todo.md)
-	[X] nl to list with line numbers (default is same as nl todo.md)
-	[X] do <line> to mark task on line <line> as done
-	[X] undo <line> to mark task on line <line> as not done
-	[X] rm <line> to remove a line
-	[ ] replace <string> <line> to replace <line> with <string>
+_(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 
-Other todos:
-	[ ] Add tests using Mocha
-	[ ] Abstract out markdown editing (do, undo)
-	[ ] Indention
-	[X] Error if no commands given
-	[ ] Works with stdin and stdout
-	[ ] Works with files
-	[ ] Work with temp file
-	[ ] Handle extra whitespace in todo mark
-	[ ] Work with list of indecies
-	[ ] Option to always print with command lines
-	[ ] Make indecies 1-based
-	[ ] Move global todo to user directory (~/.todo?)
-	[ ] Sub lists?
-	[ ] Named lists?
-	[ ] Managed by XXX fotter?
-	[ ] Managed by XXX footer?
-	[ ] Interactive mode?
-	[ ] Gist support?
-	[ ] Confrom to https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments
+### Options:
+
+- [ ] -i to set input file (default: cwd+todo.md), use - for stdin
+- [ ] -o to set ouput file (default: cwd+todo.md), use - for stdin
+- [x] -g to set input file to global default (default: npm directory+todo.md)
+- [ ] -  to toggle console (stderr) echo
+
+### Commands:
+
+- [x] add <string> to add <string> as a task
+- [ ] add <string> <line> to add <string> at line <line>
+- [x] cat to list without changes (default is same as cat todo.md)
+- [x] nl to list with line numbers (default is same as nl todo.md)
+- [x] do <line> to mark task on line <line> as done
+- [x] undo <line> to mark task on line <line> as not done
+- [x] rm <line> to remove a line
+- [ ] replace <string> <line> to replace <line> with <string>
+- [ ] move?
+- [ ] init
+
+#### Other todos:
+
+- [ ] Add tests using Mocha
+- [ ] Abstract out markdown editing (do, undo)
+- [ ] Indention
+- [x] Error if no commands given
+- [ ] Works with stdin and stdout
+- [x] Works with files
+- [ ] Work with temp file
+- [ ] Handle extra whitespace in todo mark
+- [ ] Work with list of indecies
+- [ ] Option to always print with command lines
+- [ ] Make indecies 1-based?
+- [ ] Move global task list to user directory (~/.taskmd?)
+- [ ] Sub lists?
+- [ ] Named lists?
+- [ ] Option to add "managed using"?
+- [ ] Interactive mode?  (like repl it?)
+- [ ] Gist support?
+- [x] Conform to https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments
+- [x] todo.md or task.md?

@@ -161,11 +161,11 @@ module.exports = function (program) {
 	}
 
 	function markDone(input) {
-	  return input.replace(/\[[\s\t]+\]/, '[X]');
+	  return input.replace(/\[[\s\t]+\]/, '[x]');
 	}
 
 	function markNotDone(input) {
-	  return input.replace(/\[X+\]/, '[ ]');
+	  return input.replace(/\[[xX]+\]/, '[ ]');
 	}
 
 	function lpad(str) {

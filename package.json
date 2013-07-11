@@ -1,7 +1,7 @@
 {
-  "name": "todo",
+  "name": "todo-md",
   "version": "0.0.1",
-  "description": "todo",
+  "description": "todo-md",
   "bin": {
     "todo": "./bin/todo"
   },
@@ -19,7 +19,7 @@
   "author": "J. Harshbarger",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Hypercubed/todo/issues"
+    "url": "https://github.com/Hypercubed/todo-md/issues"
   },
-  "repository": { "type": "git", "url": "https://github.com/Hypercubed/todo.git" }
+  "repository": { "type": "git", "url": "https://github.com/Hypercubed/todo-md.git" }
 }

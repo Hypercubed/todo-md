@@ -1,18 +1,18 @@
-todo.js
+todo-md
 ======
 
 This is a(nother) work in progress, experiment, proof of concept, and/or waist of time.
 
 # Description
 
-Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments) from the command line.  Built using [autocmdr](https://github.com/Hypercubed/autocmdr).
+Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments) from the command line.  A simple (but useful?) example built using [autocmdr](https://github.com/Hypercubed/autocmdr).
 
 # Usage
 
 # Install autocmdr globally (actually not yet)
 
 
-	npm install -g Hypercubed/todo
+	npm install -g Hypercubed/todo-md
 
 
 # Usage
@@ -37,4 +37,8 @@ Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-ta
 # License
 
   MIT
+
+# Acknowledgments
+
+todo-md was built using [autocmdr](https://github.com/Hypercubed/autocmdr).
 
