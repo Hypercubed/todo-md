@@ -12,6 +12,8 @@ module.exports = function (program) {
 
 	program.option('-g, --global', "use global todo list");
 
+	//program.action(function() { console.log("TEST"); });
+
 	program.on('--help', function(){
 	  console.log('  Bug reports, suggestions, updates:');
 	  console.log('  ', pkg.bugs.url);
@@ -22,51 +24,46 @@ module.exports = function (program) {
 	   .usage('list')
 	   .version('0.0.0')
 	   .description('Displays all the lines in todo list.')
-	   .option('-i, --input [file]')
+	   .option('-i, --input <file>')
 	   .action(function(opts){
-
 	   		opts = getDefaultOptions(opts);
 
-			var markdown = fs.readFileSync(opts.input, "utf-8");
-			console.log(markdown);
+			var markdown = readTodo(opts.input);
+			console.log(markdown.join('\n'));
 	   });
 
 	program
 	   .command('nl')
 	   .description('Displays all the lines in todo list with line numbers')
-	   .option('-i, --input [file]')
+	   .option('-i, --input <file>')
 	   .action(function(opts){
 	   		opts = getDefaultOptions(opts);
 
-			var markdown = fs.readFileSync(opts.input, "utf-8");
-			markdown = markdown.split(/\n/).map(addCount).join('\n');
+			var markdown = readTodo(opts.input);
 
-			console.log(markdown);
+			console.log(markdown.map(addCount).join('\n'));
 	   });
 
 	program
 	   .command('do <index>')
 	   .description('Marks task as done')
-	   .option('-i, --input [file]')
+	   .option('-i, --input <file>')
 	   .option('-o, --output [file]')
 	   .action(function(index, opts) {
 	   		opts = getDefaultOptions(opts);
 
-			var markdown = fs.readFileSync(opts.input, "utf-8");
-			markdown = markdown
-				.split(/\n/)
+			var markdown = readTodo(opts.input)
 				.map(function(line, i) {
 					if (i++ == index)
 					  line = markDone(line);
 
 					return line;
-				})
-				.join('\n');
+				});
 
 			if (opts.output)
-				fs.writeFile(opts.output, markdown);
+				fs.writeFile(opts.output, markdown.join('\n'));
 
-			console.log(markdown);
+			console.log(markdown.map(addCount).join('\n'));
 
 	   });
 
@@ -78,21 +75,18 @@ module.exports = function (program) {
 	   .action(function(index, opts) {
 	   		opts = getDefaultOptions(opts);
 
-			var markdown = fs.readFileSync(opts.input, "utf-8");
-			markdown = markdown
-				.split(/\n/)
+			var markdown = readTodo(opts.input)
 				.map(function(line, i) {
 					if (i++ == index)
 					  line = markNotDone(line);
 
 					return line;
-				})
-				.join('\n');
+				});
 
 			if (opts.output)
-				fs.writeFile(opts.output, markdown);
+				fs.writeFile(opts.output, markdown.join('\n'));
 
-			console.log(markdown);
+			console.log(markdown.map(addCount).join('\n'));
 	   });
 
 	program
@@ -103,18 +97,15 @@ module.exports = function (program) {
 	   .action(function(text, opts) {
 	   		opts = getDefaultOptions(opts);
 
-			var markdown = fs.readFileSync(opts.input, "utf-8");
-			markdown = markdown.trim().split(/\n/);
+			var markdown = readTodo(opts.input);
 
-			var ws = markdown[markdown.length-1].match(/^[ \t]+/);
+			var ws = markdown[markdown.length-1].match(/^[^\[]+/) || '';
 			markdown.push(ws+'[ ] '+text+'\n');
 
-			markdown = markdown.join('\n');
-
 			if (opts.output)
-				fs.writeFile(opts.output, markdown);
+				fs.writeFile(opts.output, markdown.join('\n'));
 
-			console.log(markdown);
+			console.log(markdown.map(addCount).join('\n'));
 			
 	   });
 
@@ -128,12 +119,22 @@ module.exports = function (program) {
 	   .action(function(index,opts) {
 	   		opts = getDefaultOptions(opts);
 
-			var markdown = fs.readFileSync(opts.input, "utf-8").split(/\n/);
+			var markdown = readTodo(opts.input)
 			markdown.splice(index,1);
 
-			console.log(markdown.join('\n'));
+			if (opts.output)
+				fs.writeFile(opts.output, markdown.join('\n'));
+
+			console.log(markdown.map(addCount).join('\n'));
 
 	   });
+
+	//program
+	//   .command('test')
+	//   .description('Remove a task')
+	//   .action(function(args) {
+	//   		program.emit('nl', program.args);
+	//   });
 
 	function getDefaultOptions(opts) {
 	  opts = opts || {};
@@ -148,8 +149,15 @@ module.exports = function (program) {
 	  return opts;
 	}
 
+	function readTodo(filepath) {
+		return fs.readFileSync(filepath, "utf-8")
+			.trim()
+			.split(/\n/);
+	}
+
 	function addCount(input, index) {
-	  return input.replace(/\[[\s\t]+\]/, '[  :'+(index)+']').replace(/\[[\s\tX]+\]/, '[X :'+(index)+']');
+		index = (input.match(/\[[\s\txX]+\]/)) ? index : '';
+	  return lpad(index)+"  "+input;
 	}
 
 	function markDone(input) {
@@ -158,7 +166,14 @@ module.exports = function (program) {
 
 	function markNotDone(input) {
 	  return input.replace(/\[X+\]/, '[ ]');
-	}	   
+	}
+
+	function lpad(str) {
+		str = String(str);
+	    while (str.length < 6)
+	        str = " " + str;
+	    return str;
+	}  
 	
 };
 

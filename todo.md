@@ -1,4 +1,3 @@
-
 Options:
 	[ ] -i to set input file (default: cwd+todo.md), use - for stdin
 	[ ] -o to set ouput file (default: cwd+todo.md), use - for stdin
@@ -19,9 +18,19 @@ Other todos:
 	[ ] Add tests using Mocha
 	[ ] Abstract out markdown editing (do, undo)
 	[ ] Indention
-	[ ] Error if no commands given
+	[X] Error if no commands given
 	[ ] Works with stdin and stdout
 	[ ] Works with files
 	[ ] Work with temp file
 	[ ] Handle extra whitespace in todo mark
 	[ ] Work with list of indecies
+	[ ] Option to always print with command lines
+	[ ] Make indecies 1-based
+	[ ] Move global todo to user directory (~/.todo?)
+	[ ] Sub lists?
+	[ ] Named lists?
+	[ ] Managed by XXX fotter?
+	[ ] Managed by XXX footer?
+	[ ] Interactive mode?
+	[ ] Gist support?
+	[ ] Confrom to https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments
