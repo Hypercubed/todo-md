@@ -157,7 +157,7 @@ module.exports = function (program) {
 
 	function addCount(input, index) {
 		index = (input.match(/\[[\s\txX]+\]/)) ? index : '';
-	  return lpad(index)+"  "+input;
+	  return lpad(index)+" | "+input;
 	}
 
 	function markDone(input) {
