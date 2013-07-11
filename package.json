@@ -1,12 +1,12 @@
 {
-  "name": "todo.js",
+  "name": "todo",
   "version": "0.0.1",
   "description": "todo",
   "bin": {
     "todo": "./bin/todo"
   },
   "dependencies": {
-    "autocmdr": "0.0.0"
+    "autocmdr": "~0.0.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -19,6 +19,7 @@
   "author": "J. Harshbarger",
   "license": "MIT",
   "bugs": {
-    "url": "coming soon"
-  }
+    "url": "https://github.com/Hypercubed/todo/issues"
+  },
+  "repository": { "type": "git", "url": "https://github.com/Hypercubed/todo.git" }
 }
