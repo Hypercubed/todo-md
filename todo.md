@@ -44,3 +44,4 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 - [x] Conform to https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments
 - [x] todo.md or task.md?
 - [ ] Colorize list
+- [ ] Add warning msgs on invalid index

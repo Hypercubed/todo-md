@@ -1,13 +1,38 @@
 #!/usr/bin/env node
 
-// node
-var path			= require('path');
+// Node.js
+var path            = require('path');
+var fs              = require('fs');
+
+// Local
+var todo = require("../lib/todo.js");
+var pkg             = require('../package.json');
 
 var autocmdr  = require('autocmdr');
 
+autocmdr._name = "todo-md";
+
+
+
 autocmdr
-	.loadCmds(path.join(__dirname,'../cmds/'))
-	.parse();
+	//.name('test')
+	.usage('[options] <cmd>')
+	.version(pkg.version)
+	.description('')
+	.loadCmds(path.join(__dirname,'../cmds/'));
+
+autocmdr
+	.on('*', function(name) { 
+		autocmdr.logger.log('warn', '\''+name+'\' is not a known command. See \''+autocmdr._name+' --help\'.');
+	});
+
+autocmdr
+	.on('--help', function(){
+	  console.log('  Bug reports, suggestions, updates:');
+	  console.log('  ', pkg.bugs.url);
+	});
+
+autocmdr.parse();
 
 if (autocmdr.args.length < 1 )
 	autocmdr.emit('nl', ['']);
