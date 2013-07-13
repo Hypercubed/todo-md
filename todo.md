@@ -48,3 +48,4 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 - [ ] Turn off echo
 - [ ] Option to only print alterned lines
 - [ ] Make todo.js async?
+- [ ] Check for missing todo.md

@@ -14,9 +14,11 @@ module.exports = function (program) {
 	   .option('-i, --input <file>')
 	   .action(function(opts) {
 	   		//console.log(this); //arguments[arguments.length-1]);
-	   		//console.log(arguments);
+	   		console.log(opts);
 
 	   		var opts = todo.getDefaultOptions(opts);
+
+
 
 			todo.load(opts.input).list(program.lineNumbers);
 

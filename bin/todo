@@ -10,6 +10,8 @@ var pkg             = require('../package.json');
 
 var autocmdr  = require('autocmdr');
 
+console.log(require('autocmdr/cmds/cp')(autocmdr));
+
 autocmdr._name = "todo-md";
 
 autocmdr
@@ -38,5 +40,8 @@ autocmdr
 
 autocmdr.parse();
 
+//console.log(autocmdr);
+
 if (autocmdr.args.length < 1 )
-	autocmdr.emit('list', ['']);
+	autocmdr.parse(['', '', 'list']);
+	//autocmdr.emit('list', [autocmdr]);
