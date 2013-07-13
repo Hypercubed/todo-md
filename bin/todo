@@ -12,14 +12,18 @@ var autocmdr  = require('autocmdr');
 
 autocmdr._name = "todo-md";
 
-
-
 autocmdr
 	//.name('test')
 	.usage('[options] <cmd>')
 	.version(pkg.version)
 	.description('')
 	.loadCmds(path.join(__dirname,'../cmds/'));
+
+autocmdr
+	.option('-g, --global', "use global autocmdr tasks")
+	.once('global', function() {
+		// Set global list
+	});
 
 autocmdr
 	.on('*', function(name) { 
@@ -35,4 +39,4 @@ autocmdr
 autocmdr.parse();
 
 if (autocmdr.args.length < 1 )
-	autocmdr.emit('nl', ['']);
+	autocmdr.emit('list', ['']);

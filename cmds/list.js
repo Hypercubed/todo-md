@@ -9,15 +9,19 @@ var todo = require("../lib/todo.js");
 module.exports = function (program) {
 
 	program
-	   .command('nl')
+	   .command('list')
 	   .description('Displays all the lines in todo list with line numbers')
 	   .option('-i, --input <file>')
-	   .action(function(opts){
-	   		opts = todo.getDefaultOptions(opts);
+	   .action(function() {
+
+	   		var opts = todo.getDefaultOptions(program);
 
 			var markdown = todo.readTodo(opts.input);
 
-			console.log(markdown.map(todo.addCount).join('\n'));
+			if (program.lineNumbers)
+				markdown = markdown.map(todo.addCount);
+
+			console.log(markdown.join('\n'));
 	   });
 	
 };

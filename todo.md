@@ -45,3 +45,5 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 - [x] todo.md or task.md?
 - [ ] Colorize list
 - [ ] Add warning msgs on invalid index
+- [ ] Turn off echo
+- [ ] Option to only print alterned lines

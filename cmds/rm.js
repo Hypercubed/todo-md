@@ -21,7 +21,10 @@ module.exports = function (program) {
 			if (opts.output)
 				fs.writeFile(opts.output, markdown.join('\n'));
 
-			console.log(markdown.map(todo.addCount).join('\n'));
+			if (program.lineNumbers)
+				markdown = markdown.map(todo.addCount);
+
+			console.log(markdown.join('\n'));
 
 	   });
 	

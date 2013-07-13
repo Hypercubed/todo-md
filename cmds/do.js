@@ -12,8 +12,8 @@ module.exports = function (program) {
 	   .description('Marks task as done')
 	   .option('-i, --input <file>')
 	   .option('-o, --output [file]')
-	   .action(function(index, opts) {
-	   		opts = todo.getDefaultOptions(program, opts);
+	   .action(function(index) {
+	   		opts = todo.getDefaultOptions(program);
 
 			var markdown = todo.readTodo(opts.input)
 				.map(function(line, i) {
@@ -26,7 +26,12 @@ module.exports = function (program) {
 			if (opts.output)
 				fs.writeFile(opts.output, markdown.join('\n'));
 
-			console.log(markdown.map(todo.addCount).join('\n'));
+			if (program.lineNumbers)
+				markdown = markdown.map(todo.addCount);
+
+			console.log(markdown.join('\n'));
+
+			//program.emit('list', ['']);
 
 	   });
 	
