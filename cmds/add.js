@@ -1,6 +1,3 @@
-// Node.js
-var path            = require('path');
-var fs              = require('fs');
 
 // Local
 var todo = require("../lib/todo.js");
@@ -13,20 +10,14 @@ module.exports = function (program) {
 	   .option('-i, --input [file]')
 	   .option('-o, --output [file]')
 	   .action(function(text, opts) {
-	   		opts = todo.getDefaultOptions(program, opts);
+	   		opts = todo.getDefaultOptions(opts);
 
-			var markdown = todo.readTodo(opts.input);
-
-			var ws = markdown[markdown.length-1].match(/^[^\[]+/) || '';
-			markdown.push(ws+'[ ] '+text+'\n');
+			todo.load(opts.input).add(text);
 
 			if (opts.output)
-				fs.writeFile(opts.output, markdown.join('\n'));
+				todo.write(opts.output);
 
-			if (program.lineNumbers)
-				markdown = markdown.map(todo.addCount);
-
-			console.log(markdown.join('\n'));
+			todo.list(program.lineNumbers);
 			
 	   });
 	

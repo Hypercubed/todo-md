@@ -25,7 +25,7 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 #### Other todos:
 
 - [ ] Add tests using Mocha
-- [ ] Abstract out markdown editing (do, undo)
+- [x] Abstract out markdown editing (do, undo)
 - [ ] Indention
 - [x] Error if no commands given
 - [ ] Works with stdin and stdout
@@ -42,8 +42,9 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 - [ ] Interactive mode?  (like repl it?)
 - [ ] Gist support?
 - [x] Conform to https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments
-- [x] todo.md or task.md?
+- [ ] todo.md or task.md?
 - [ ] Colorize list
 - [ ] Add warning msgs on invalid index
 - [ ] Turn off echo
 - [ ] Option to only print alterned lines
+- [ ] Make todo.js async?

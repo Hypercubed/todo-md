@@ -12,16 +12,18 @@ module.exports = function (program) {
 	   .command('list')
 	   .description('Displays all the lines in todo list with line numbers')
 	   .option('-i, --input <file>')
-	   .action(function() {
+	   .action(function(opts) {
+	   		//console.log(this); //arguments[arguments.length-1]);
+	   		//console.log(arguments);
 
-	   		var opts = todo.getDefaultOptions(program);
+	   		var opts = todo.getDefaultOptions(opts);
 
-			var markdown = todo.readTodo(opts.input);
+			todo.load(opts.input).list(program.lineNumbers);
 
-			if (program.lineNumbers)
-				markdown = markdown.map(todo.addCount);
+			//if (program.lineNumbers)
+			//	markdown = markdown.map(todo.addCount);
 
-			console.log(markdown.join('\n'));
+			//console.log(markdown.join('\n'));
 	   });
 	
 };
