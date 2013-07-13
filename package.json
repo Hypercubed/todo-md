@@ -6,7 +6,7 @@
     "todo": "./bin/todo"
   },
   "dependencies": {
-    "autocmdr": "~0.0.1"
+    "autocmdr": "https://github.com/Hypercubed/autocmdr/tarball/master"
   },
   "devDependencies": {},
   "scripts": {
