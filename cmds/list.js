@@ -21,10 +21,6 @@ module.exports = function (program) {
 				.load()
 				.list();
 
-			//if (program.lineNumbers)
-			//	markdown = markdown.map(todo.addCount);
-
-			//console.log(markdown.join('\n'));
 	   });
 	
 };
