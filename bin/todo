@@ -7,7 +7,7 @@ var fs              = require('fs');
 // Local
 var todo = require("../lib/todo.js");
 
-var program  = require('commander');
+var program  = require('autocmdr');
 
 require('autocmdr/lib/package.js')(program);
 require('autocmdr/lib/logger.js')(program);

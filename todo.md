@@ -46,6 +46,6 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 - [ ] Colorize list
 - [ ] Add warning msgs on invalid index
 - [ ] Turn off echo
-- [ ] Option to only print alterned lines
+- [ ] Option to only print only altered lines
 - [ ] Make todo.js async?
 - [ ] Check for missing todo.md
