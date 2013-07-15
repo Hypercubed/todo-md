@@ -6,13 +6,17 @@
     "todo": "./bin/todo"
   },
   "dependencies": {
-    "autocmdr": "https://github.com/Hypercubed/autocmdr/tarball/master"
+    "autocmdr": "https://github.com/Hypercubed/autocmdr/tarball/master",
+    "commander": "~1.3.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hypercubed/todo-md.git"
+  },
   "keywords": [
     "node"
   ],
@@ -20,6 +24,5 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Hypercubed/todo-md/issues"
-  },
-  "repository": { "type": "git", "url": "https://github.com/Hypercubed/todo-md.git" }
+  }
 }

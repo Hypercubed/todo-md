@@ -6,42 +6,30 @@ var fs              = require('fs');
 
 // Local
 var todo = require("../lib/todo.js");
-var pkg             = require('../package.json');
 
-var autocmdr  = require('autocmdr');
+var program  = require('commander');
 
-console.log(require('autocmdr/cmds/cp')(autocmdr));
+require('autocmdr/lib/package.js')(program);
+require('autocmdr/lib/logger.js')(program);
+require('autocmdr/lib/loader.js')(program);
 
-autocmdr._name = "todo-md";
+program.loadCmds(path.join(__dirname,'../cmds/'));
 
-autocmdr
-	//.name('test')
-	.usage('[options] <cmd>')
-	.version(pkg.version)
-	.description('')
-	.loadCmds(path.join(__dirname,'../cmds/'));
-
-autocmdr
-	.option('-g, --global', "use global autocmdr tasks")
+program
+	.option('-g, --global', "use global task list")
 	.once('global', function() {
 		// Set global list
 	});
 
-autocmdr
+program
 	.on('*', function(name) { 
-		autocmdr.logger.log('warn', '\''+name+'\' is not a known command. See \''+autocmdr._name+' --help\'.');
+		program.logger.log('warn', '\''+name+'\' is not a known command. See \''+program._name+' --help\'.');
 	});
 
-autocmdr
-	.on('--help', function(){
-	  console.log('  Bug reports, suggestions, updates:');
-	  console.log('  ', pkg.bugs.url);
-	});
-
-autocmdr.parse();
+program.parse(process.argv);
 
 //console.log(autocmdr);
 
-if (autocmdr.args.length < 1 )
-	autocmdr.parse(['', '', 'list']);
+if (program.args.length < 1 )
+	program.parse(['', '', 'list']);
 	//autocmdr.emit('list', [autocmdr]);
