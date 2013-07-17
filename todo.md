@@ -35,7 +35,7 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 - [ ] Work with list of indecies
 - [ ] Option to always print with command lines
 - [ ] Make indecies 1-based?
-- [ ] Move global task list to user directory (~/.taskmd?)
+- [x] Move global task list to user directory (~/.taskmd?)
 - [ ] Sub lists?
 - [ ] Named lists?
 - [ ] Option to add "managed using"?
@@ -49,3 +49,6 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 - [ ] Option to only print only altered lines
 - [ ] Make todo.js async?
 - [ ] Check for missing todo.md
+- [ ] rm, do, and undo by text
+- [ ] Read todo's from other files
+- [ ] Improve options

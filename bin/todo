@@ -13,18 +13,9 @@ require('autocmdr/lib/package.js')(program);
 require('autocmdr/lib/logger.js')(program);
 require('autocmdr/lib/loader.js')(program);
 
+program._name ="todo";
+
 program.loadCmds(path.join(__dirname,'../cmds/'));
-
-program
-	.option('-g, --global', "use global task list")
-	.once('global', function() {
-		// Set global list
-	});
-
-program
-	.on('*', function(name) { 
-		program.logger.log('warn', '\''+name+'\' is not a known command. See \''+program._name+' --help\'.');
-	});
 
 program.parse(process.argv);
 
