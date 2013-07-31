@@ -9,11 +9,10 @@ var todo = require("../lib/todo.js");
 
 var program  = require('autocmdr');
 
-require('autocmdr/lib/package.js')(program);
-require('autocmdr/lib/logger.js')(program);
 require('autocmdr/lib/loader.js')(program);
 
-program._name ="todo";
+require('autocmdr/lib/package.js')(program);
+require('autocmdr/lib/logger.js')(program);
 
 program.loadCmds(path.join(__dirname,'../cmds/'));
 
