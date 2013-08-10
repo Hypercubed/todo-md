@@ -15,7 +15,7 @@ program
    		program.parse(['', '', 'add', text]);
    });
 
-require('autocmdr/lib/completion.js')(program, { name: "todo" });
+require('autocmdr/lib/completion.js')(program);
 
 program.parse(process.argv);
 
