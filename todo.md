@@ -1,12 +1,15 @@
 # Todo list for [todo-md](https://github.com/Hypercubed/todo-md)
 
-_(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
+_\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
+
+### Priority
+- [ ] Finish -o
 
 ### Options:
 
 - [ ] -i to set input file (default: cwd+todo.md), use - for stdin
-- [ ] -o to set ouput file (default: cwd+todo.md), use - for stdin
-- [x] -g to set input file to global default (default: npm directory+todo.md)
+- [ ] -o to set output file (default: cwd+todo.md), use - for stdin
+- [x] -g to set input file to global default
 - [ ] -  to toggle console (stderr) echo
 
 ### Commands:
@@ -32,9 +35,10 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 - [x] Works with files
 - [ ] Work with temp file
 - [ ] Handle extra whitespace in todo mark
-- [ ] Work with list of indecies
+- [ ] Handel extra marks (X,x,-,A,B,C, etc)
+- [ ] Work with list of indices
 - [ ] Option to always print with command lines
-- [ ] Make indecies 1-based?
+- [ ] Make all indices 1-based?
 - [x] Move global task list to user directory (~/.taskmd?)
 - [ ] Sub lists?
 - [ ] Named lists?
@@ -50,5 +54,6 @@ _(managed using [todo-md](https://github.com/Hypercubed/todo-md))_
 - [ ] Make todo.js async?
 - [ ] Check for missing todo.md
 - [ ] rm, do, and undo by text
-- [ ] Read todo's from other files
+- [ ] Read todo's from other files, example .js and .md
 - [ ] Improve options
+- [ ] config
