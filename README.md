@@ -33,15 +33,21 @@ Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-ta
     -d, --debug   enable debugger
     -g, --global  use global todo list
 
+## Do one of the following to enable auto-completion in your shell.
+
+* Add completion helper to ~/.bashrc (or ~/.zshrc) `todo completion >> ~/.bashrc`
+* Add completion to current shell `. <(todo completion)`
+
 # Todo
 
 See todo.md (managed using [todo-md](https://github.com/Hypercubed/todo-md))
 
 # License
 
-  MIT
+Copyright (c) 2013 J. Harshbarger
+MIT
 
 # Acknowledgments
 
-todo-md was built using [autocmdr](https://github.com/Hypercubed/autocmdr).
+Built using [autocmdr](https://github.com/Hypercubed/autocmdr).
 

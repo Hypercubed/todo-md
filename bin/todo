@@ -10,9 +10,11 @@ require('autocmdr/lib/loader.js')(program);
 require('autocmdr/lib/package.js')(program);
 require('autocmdr/lib/config.js')(program);
 
+program.option('-g, --global');
+
 program
    .on('*', function(text, opts) {
-   		program.parse(['', '', 'add', text]);
+		program.parse(['', '', 'add', text]);
    });
 
 require('autocmdr/lib/completion.js')(program);
