@@ -57,3 +57,4 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Read todo's from other files, example .js and .md
 - [ ] Improve options
 - [ ] config
+- [x] update autocmdr dependency
