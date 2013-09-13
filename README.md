@@ -1,4 +1,4 @@
-todo-md
+todo-md [![Build Status](https://secure.travis-ci.org/Hypercubed/todo-md.png?branch=master)](https://travis-ci.org/Hypercubed/todo-md) [![NPM version](https://badge.fury.io/js/todo-md.png)](http://badge.fury.io/js/todo-md)
 ======
 
 This is a(nother) work in progress, experiment, proof of concept, and/or waist of time.
@@ -44,10 +44,9 @@ See todo.md (managed using [todo-md](https://github.com/Hypercubed/todo-md))
 
 # License
 
-Copyright (c) 2013 J. Harshbarger
-MIT
+Copyright (c) 2013 Jayson Harshbarger
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 # Acknowledgments
 
-Built using [autocmdr](https://github.com/Hypercubed/autocmdr).
-
+Built using [generator-commader](https://github.com/Hypercubed/generator-commander).
