@@ -27,7 +27,6 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 
 #### Other todos:
 
-- [ ] Add tests using Mocha
 - [x] Abstract out markdown editing (do, undo)
 - [ ] Indention
 - [x] Error if no commands given
@@ -35,7 +34,6 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [x] Works with files
 - [ ] Work with temp file
 - [ ] Handle extra whitespace in todo mark
-- [ ] Handel extra marks (X,x,-,A,B,C, etc)
 - [ ] Work with list of indices
 - [ ] Option to always print with command lines
 - [ ] Make all indices 1-based?
@@ -58,3 +56,5 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Improve options
 - [ ] config
 - [x] update autocmdr dependency
+- [ ] Add better tests using mocha
+- [ ] Handle extra marks (X,x,-,A,B,C, etc)
