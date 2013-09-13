@@ -1,14 +1,16 @@
 #!/usr/bin/env node
+'use strict';
+
+var program  = require('commander');
 
 // Local lib
 var todo = require("../lib/todo.js");
 
-var program  = require('autocmdr');
-
-require('autocmdr/lib/logger.js')(program);
-require('autocmdr/lib/loader.js')(program);
-require('autocmdr/lib/package.js')(program);
-require('autocmdr/lib/config.js')(program);
+require('autocmdr/lib/logger')(program);
+require('autocmdr/lib/loader')(program);
+require('autocmdr/lib/completion')(program);
+require('autocmdr/lib/package')(program);
+require('autocmdr/lib/config')(program);
 
 program.option('-g, --global');
 
@@ -16,8 +18,6 @@ program
    .on('*', function(text, opts) {
 		program.parse(['', '', 'add', text]);
    });
-
-require('autocmdr/lib/completion.js')(program);
 
 program.parse(process.argv);
 

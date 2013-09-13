@@ -1,11 +1,12 @@
 {
   "name": "todo-md",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "todo-md",
   "bin": {
     "todo": "./bin/todo"
   },
   "dependencies": {
+    "commander": "~2.0.0",
     "autocmdr": "~0.0.2",
     "colors": "~0.6.0-1"
   },
@@ -14,6 +15,11 @@
   "scripts": {
     "test": "mocha -R spec"
   },
+  "author": {
+    "name": "Jayson Harshbarger",
+    "email": "",
+    "url": "https://github.com/Hypercubed"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Hypercubed/todo-md.git"
@@ -21,9 +27,6 @@
   "keywords": [
     "node"
   ],
-  "author": "J. Harshbarger",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Hypercubed/todo-md/issues"
-  }
+  "bugs": "https://github.com/Hypercubed/todo-md/issues"
 }
