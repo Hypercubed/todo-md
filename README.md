@@ -49,4 +49,4 @@ Copyright (c) 2013 Jayson Harshbarger
 
 # Acknowledgments
 
-Built using [generator-commader](https://github.com/Hypercubed/generator-commander).
+Built using [generator-commader](https://github.com/Hypercubed/generator-commander) and [autocmdr](https://github.com/Hypercubed/autocmdr).

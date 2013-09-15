@@ -1,7 +1,8 @@
 {
   "name": "todo-md",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "todo-md",
+  "main": "lib/todo.js",
   "bin": {
     "todo": "./bin/todo"
   },
@@ -11,6 +12,7 @@
     "colors": "~0.6.0-1"
   },
   "devDependencies": {
+    "mkdirp": "~0.3.5"
   },
   "scripts": {
     "test": "mocha -R spec"
