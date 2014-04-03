@@ -5,6 +5,8 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 ### Priority
 - [ ] Finish -o
 - [ ] Improved tests
+- [ ] Fix config
+- [ ] filtes (done, pending,etc)
 
 ### Options:
 
@@ -57,10 +59,9 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] rm, do, and undo by text? by tag?
 - [ ] Read todo's from other files, example .js and .md
 - [ ] Improve options
-- [ ] config
 - [x] update autocmdr dependency
 - [ ] Add better tests using mocha
-- [ ] Handle extra marks (X,x,-,A,B,C, etc)
+- [ ] Handle extra marks (X,x,-,A,B,C, etc), prioities
 - [x] add --no-color option
 - [ ] Tagging (`todo add "Test #urgent"`, `todo list #urgent`)
 - [ ] Move all console.logs to program not lib
