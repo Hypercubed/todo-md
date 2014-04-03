@@ -12,6 +12,7 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
   - [x] do
   - [x] undo
   - [x] rm
+  - [ ] Improved tests
 
 ### Options:
 
@@ -34,7 +35,7 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] purge done
 - [ ] init
 - [ ] append
-- [ ] get text from one line, (todo print 15 > anotherfile.txt)
+- [x] get text from one line, (todo print 15 > anotherfile.txt)
 
 #### Other todos:
 
