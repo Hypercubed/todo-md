@@ -15,8 +15,8 @@ require('autocmdr/lib/config')(program);
 program.option('-g, --global');
 
 program
-   .on('*', function(text, opts) {
-		program.parse(['', '', 'add', text]);
+   .on('*', function(cmds, opts) {
+		program.parse(['', '', 'add'].concat(cmds));
    });
 
 program.parse(process.argv);
