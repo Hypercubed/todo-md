@@ -12,14 +12,14 @@ require('autocmdr/lib/completion')(program);
 require('autocmdr/lib/package')(program);
 require('autocmdr/lib/config')(program);
 
-program.option('-g, --global');
+program.option('-g, --global','use global todo list (usually ~/todo.md)');
 
 program
    .on('*', function(cmds, opts) {
-		program.parse(['', '', 'add'].concat(cmds));
+        program.parse(['', '', 'add'].concat(cmds));
    });
 
 program.parse(process.argv);
 
 if (program.args.length < 1 )
-	program.parse(['', '', 'list']);
+    program.parse(['', '', 'list']);

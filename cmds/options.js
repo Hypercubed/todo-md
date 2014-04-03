@@ -1,14 +1,12 @@
 module.exports = function (program) {
 
-	program
-		.option('-N, --no-line-numbers', 'Disable line numbers')
-		.option('-i, --input [file]')
-		.option('-o, --output [file]')
-		
-		;
+    program
+        .option('-N, --no-line-numbers', 'Disable line numbers')
+        .option('-i, --input [file]')
+        .option('-o, --output [file]')
+        .option('-C, --no-color', 'Disable line numbers')
+        .option('-S, --no-stats', 'Disable stats')
+        .option('-q, --quiet', 'Quiet mode')
+        ;
 
-	//program.on('global', function() {
-	//	console.log("global");
-	//});
-	
 };

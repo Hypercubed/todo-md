@@ -4,15 +4,7 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 
 ### Priority
 - [ ] Finish -o
-- [x] Ranges
-  - [x] do
-  - [x] undo
-  - [x] rm
-- [x ] List of indecies
-  - [x] do
-  - [x] undo
-  - [x] rm
-  - [ ] Improved tests
+- [ ] Improved tests
 
 ### Options:
 
@@ -46,28 +38,29 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [x] Works with files
 - [ ] Work with temp file
 - [ ] Handle extra whitespace in todo mark
-- [ ] Work with list of indices
-- [ ] Option to always print with command lines
+- [x] Work with list of indices
 - [ ] Make all indices 1-based?
 - [x] Move global task list to user directory (~/.taskmd?)
 - [ ] Sub lists?
 - [ ] Named lists?
-- [ ] Option to add "managed using"?
+- [ ] Option to add "managed using"? init? disable banner?
 - [ ] Interactive mode?  (like repl it?)
 - [ ] Gist support?
 - [x] Conform to https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments
 - [-] todo.md or task.md?
-- [ ] Colorize list
+- [x] Colorize list
 - [ ] Add warning msgs on invalid index
-- [ ] Turn off echo
-- [ ] Option to only print altered lines
+- [x] Turn off echo
+- [ ] Option to only print altered lines?
 - [ ] Make todo.js async?
-- [ ] Check for missing todo.md
-- [ ] rm, do, and undo by text?
+- [x] Check for missing todo.md
+- [ ] rm, do, and undo by text? by tag?
 - [ ] Read todo's from other files, example .js and .md
 - [ ] Improve options
 - [ ] config
 - [x] update autocmdr dependency
 - [ ] Add better tests using mocha
 - [ ] Handle extra marks (X,x,-,A,B,C, etc)
-- [ ] add --no-color option
+- [x] add --no-color option
+- [ ] Tagging (`todo add "Test #urgent"`, `todo list #urgent`)
+- [ ] Move all console.logs to program not lib

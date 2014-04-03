@@ -61,7 +61,7 @@ Note that `do`, `undo`, and `rm` require an index while `list` and `add` the ind
   Commands:
 
                  list [index]  Displays all (or specified) lines in todo list with line numbers
-                print [index]  Displays all (or specified) lines in todo list without line numbers (same as list -N)
+                print [index]  Displays all (or specified) lines in todo list without line numbers (same as list --no-color --no-stats --no-line-numbers)
     add <text_to_add> [index]  Adds text_to_add to your todo file on its own line at [index] or EOF if no index provided    
                    do <index>  Marks task as done
                  undo <index>  Marks task as not done
@@ -71,7 +71,7 @@ Note that `do`, `undo`, and `rm` require an index while `list` and `add` the ind
 
     -h, --help    output usage information
     -d, --debug   enable debugger
-    -g, --global  use global todo list
+    -g, --global  use global todo list (usually ~/todo.md)
     -N, --no-line-numbers  Disable line numbers
 
 ## Autocomplete
