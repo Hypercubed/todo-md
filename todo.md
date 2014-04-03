@@ -4,6 +4,14 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 
 ### Priority
 - [ ] Finish -o
+- [x] Ranges
+  - [x] do
+  - [x] undo
+  - [x] rm
+- [x ] List of indecies
+  - [x] do
+  - [x] undo
+  - [x] rm
 
 ### Options:
 
@@ -15,15 +23,18 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 ### Commands:
 
 - [x] add <string> to add <string> as a task
-- [ ] add <string> <line> to add <string> at line <line>
+- [x] add <string> <line> to add <string> at line <line>
 - [x] cat to list without changes (default is same as cat todo.md)
 - [x] nl to list with line numbers (default is same as nl todo.md)
 - [x] do <line> to mark task on line <line> as done
 - [x] undo <line> to mark task on line <line> as not done
 - [x] rm <line> to remove a line
 - [ ] replace <string> <line> to replace <line> with <string>
-- [ ] move?
+- [ ] move
+- [ ] purge done
 - [ ] init
+- [ ] append
+- [ ] get text from one line, (todo print 15 > anotherfile.txt)
 
 #### Other todos:
 
@@ -44,17 +55,18 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Interactive mode?  (like repl it?)
 - [ ] Gist support?
 - [x] Conform to https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments
-- [ ] todo.md or task.md?
+- [-] todo.md or task.md?
 - [ ] Colorize list
 - [ ] Add warning msgs on invalid index
 - [ ] Turn off echo
-- [ ] Option to only print only altered lines
+- [ ] Option to only print altered lines
 - [ ] Make todo.js async?
 - [ ] Check for missing todo.md
-- [ ] rm, do, and undo by text
+- [ ] rm, do, and undo by text?
 - [ ] Read todo's from other files, example .js and .md
 - [ ] Improve options
 - [ ] config
 - [x] update autocmdr dependency
 - [ ] Add better tests using mocha
 - [ ] Handle extra marks (X,x,-,A,B,C, etc)
+- [ ] add --no-color option
