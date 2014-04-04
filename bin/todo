@@ -3,9 +3,6 @@
 
 var program  = require('commander');
 
-// Local lib
-var todo = require("../lib/todo.js");
-
 require('autocmdr/lib/logger')(program);
 require('autocmdr/lib/loader')(program);
 require('autocmdr/lib/completion')(program);
@@ -15,11 +12,12 @@ require('autocmdr/lib/config')(program);
 program.option('-g, --global','use global todo list (usually ~/todo.md)');
 
 program
-   .on('*', function(cmds, opts) {
+   .on('*', function(cmds) {
         program.parse(['', '', 'add'].concat(cmds));
    });
 
 program.parse(process.argv);
 
-if (program.args.length < 1 )
+if (program.args.length < 1 ) {
     program.parse(['', '', 'list']);
+}

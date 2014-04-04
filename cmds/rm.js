@@ -1,26 +1,29 @@
 
 // Local
-var todo = require("../lib/todo.js");
+var todo = require('../lib/todo.js');
 
 module.exports = function (program) {
+  'use strict';
 
-    program
-       .command('rm <index>')
-       .description('Remove task(s)')
-       //.option('-i, --input [file]')
-       //.option('-o, --output [file]')
-       .action(function(index,opts) {
+  program
+    .command('rm <index>')
+    .description('Remove task(s)')
+    .action(function(index) {
 
-            todo
-                .options(program)
-                .load()
-                .rm(index)
-                .write();
+      todo
+        .options(program)
+        .load()
+        .rm(index)
+        .write();
 
-            if (!program.quiet) {
-                todo.list();
-            }
+      if (!program.quiet) {
+        todo.list();
 
-       });
+        if (!!program.stats) {
+          todo.stats();        
+        }
+      }
+
+    });
 
 };
