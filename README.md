@@ -66,6 +66,7 @@ Note that `do`, `undo`, and `rm` require an index while `list` and `add` the ind
                    do <index>  Marks task as done
                  undo <index>  Marks task as not done
                    rm <index>  Removes tasks
+                       status  Shows the tasks status (total, done, pending)
 
   Options:
 
