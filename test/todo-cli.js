@@ -2,27 +2,26 @@
 
 /* global it */
 /* global describe */
+/* global beforeEach */
 
 var assert = require('assert');
 var exec = require('child_process').exec;
 var path = require('path');
-var mkdirp = require('mkdirp');
-
-
-describe('todo API', function () {
-  var todo = require('../');
-
-  it('should be an Todo instance', function () {
-    assert(todo instanceof todo.Todo);
-  });
-
-});
+//var mkdirp = require('mkdirp');
 
 describe('todo bin', function(){
   var cmd = 'node '+path.join(__dirname, '../bin/todo')+' ';
 
-  mkdirp.sync('test/temp');
-  process.chdir('test/temp');
+  //mkdirp.sync('test/temp');
+  //process.chdir('test/temp');
+
+  beforeEach(function() {
+    process.chdir('test/temp');
+  });
+
+  beforeEach(function() {
+    process.chdir('../..');
+  });
 
   it('--help should run without errors', function(done) {
     exec(cmd+'--help', function (error) {

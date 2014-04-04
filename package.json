@@ -9,14 +9,17 @@
   "dependencies": {
     "commander": "~2.0.0",
     "autocmdr": "~0.0.2",
-    "colors": "~0.6.0-1"
+    "colors": "~0.6.0-1",
+    "grunt": "~0.4.4"
   },
   "devDependencies": {
     "mkdirp": "~0.3.5",
-    "mocha": "~1.12.1"
+    "load-grunt-tasks": "~0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-mocha-test": "~0.10.0"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "grunt mochaTest"
   },
   "author": {
     "name": "Jayson Harshbarger",

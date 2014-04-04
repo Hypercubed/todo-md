@@ -1,7 +1,4 @@
 # Todo list for [todo-md](https://github.com/Hypercubed/todo-md)
-
-_\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
-
 ### Priority
 - [ ] Finish -o
 - [ ] Improved tests
@@ -67,4 +64,9 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Move all console.logs to program not lib
 - [x] jshint
 - [x] Fix indentions
-- [x] 123
+- [ ] A task
+- [ ] Another task
+- [ ] A task
+- [ ] Another task
+- [ ] A task
+- [ ] Another task
