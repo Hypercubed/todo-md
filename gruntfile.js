@@ -19,6 +19,7 @@ module.exports = function(grunt){
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('default', ['jshint','mochaTest']);
+  grunt.registerTask('test', ['mochaTest']);
+  grunt.registerTask('default', ['jshint','test']);
 
 };

@@ -7,20 +7,19 @@
 var assert = require('assert');
 var exec = require('child_process').exec;
 var path = require('path');
-//var mkdirp = require('mkdirp');
+var mkdirp = require('mkdirp');
 
 describe('todo bin', function(){
   var cmd = 'node '+path.join(__dirname, '../bin/todo')+' ';
 
-  //mkdirp.sync('test/temp');
-  //process.chdir('test/temp');
+  mkdirp(path.join(__dirname, 'temp'));
 
   beforeEach(function() {
-    process.chdir('test/temp');
+    process.chdir(path.join(__dirname, 'temp'));
   });
 
-  beforeEach(function() {
-    process.chdir('../..');
+  afterEach(function() {
+    process.chdir(path.join(__dirname));
   });
 
   it('--help should run without errors', function(done) {
@@ -87,7 +86,7 @@ describe('todo bin', function(){
   it('should NOT return error on rm command', function(done) {
     this.timeout(4000);
 
-    exec(cmd+'rm 2', function (error) {
+    exec(cmd+'rm 5-6', function (error) {
       assert(!error);
       done();
     });
