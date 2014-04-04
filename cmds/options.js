@@ -1,5 +1,6 @@
 module.exports = function (program) {
-
+  'use strict';
+  
   program
     .option('-N, --no-line-numbers', 'Disable line numbers')
     .option('-i, --input [file]')

@@ -1,13 +1,14 @@
 
 // Local
-var todo = require("../lib/todo.js");
+var todo = require('../lib/todo.js');
 
 module.exports = function (program) {
+  'use strict';
 
   program
     .command('do <index>')
     .description('Marks task(s) as done')
-    .action(function(index, opts) {
+    .action(function(index) {
 
       todo
         .options(program)

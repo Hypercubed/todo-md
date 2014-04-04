@@ -64,3 +64,5 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [x] add --no-color option
 - [ ] Tagging (`todo add "Test #urgent"`, `todo list #urgent`)
 - [ ] Move all console.logs to program not lib
+- [x] jshint
+- [x] Fix indentions

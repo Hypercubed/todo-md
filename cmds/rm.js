@@ -1,13 +1,14 @@
 
 // Local
-var todo = require("../lib/todo.js");
+var todo = require('../lib/todo.js');
 
 module.exports = function (program) {
+  'use strict';
 
   program
     .command('rm <index>')
     .description('Remove task(s)')
-    .action(function(index,opts) {
+    .action(function(index) {
 
       todo
         .options(program)
