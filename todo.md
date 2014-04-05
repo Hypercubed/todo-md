@@ -67,3 +67,4 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Move all console.logs to program not lib
 - [x] jshint
 - [x] Fix indentions
+- [ ] Filesystem mocks?
