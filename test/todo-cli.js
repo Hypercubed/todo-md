@@ -8,18 +8,21 @@ var assert = require('assert');
 var exec = require('child_process').exec;
 var path = require('path');
 var mkdirp = require('mkdirp');
+var fs = require('fs');
 
 describe('todo bin', function(){
   var cmd = 'node '+path.join(__dirname, '../bin/todo')+' ';
 
   mkdirp(path.join(__dirname, 'temp'));
 
+  var todofile = path.join(__dirname, 'temp/todo.md');
+
+  if (fs.existsSync(todofile)) {
+    fs.unlinkSync(todofile);
+  }
+
   beforeEach(function() {
     process.chdir(path.join(__dirname, 'temp'));
-  });
-
-  afterEach(function() {
-    process.chdir(path.join(__dirname));
   });
 
   it('--help should run without errors', function(done) {

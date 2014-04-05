@@ -12,8 +12,8 @@ module.exports = function(grunt){
         options: {
           reporter: 'spec'
         },
-        src: ['test/todo-spec.js','test/todo-cli.js'],
-      },
+        src: ['test/*.js'],
+      }
     }
   });
 

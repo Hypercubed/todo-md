@@ -5,6 +5,7 @@
 /* global beforeEach */
 
 var assert = require('assert');
+var path = require('path');
 
 describe('todo API', function () {
   var todo = require('../');
@@ -19,14 +20,12 @@ describe('todo API', function () {
 });
 
 describe('todo API functions', function () {
+
   var todo = require('../');
 
-  //
-  //return;
-
   beforeEach(function(){
-    //console.log(process.cwd());
-    todo.load('./test/fixtures/todo.md');
+    process.chdir(path.join(__dirname));
+    todo.load('./fixtures/todo.md');
   });
 
   it('should load from file', function () {
