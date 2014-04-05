@@ -17,7 +17,8 @@
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-mocha-test": "~0.10.0",
     "grunt-release": "~0.7.0",
-    "grunt": "^0.4.4"
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13"
   },
   "scripts": {
     "test": "grunt mochaTest"
