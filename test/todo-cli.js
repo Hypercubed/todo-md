@@ -95,4 +95,13 @@ describe('todo bin', function(){
     });
   });
 
+  it('should NOT return error on mv command', function(done) {
+    this.timeout(4000);
+
+    exec(cmd+'mv 5 6', function (error) {
+      assert(!error);
+      done();
+    });
+  });
+
 });

@@ -54,7 +54,16 @@ describe('todo API functions', function () {
     assert.strictEqual(todo.md[2], '- [ ] Task 5');
     assert.strictEqual(todo.md[3], '- [ ] Task 3');
     assert.strictEqual(todo.md[4], '- [x] Task 4');
+  });
 
+  it('add should accept an out of bound index', function () {  // Should it pad?
+    assert.strictEqual(todo.add('Task 5', 10), 5);
+    assert.strictEqual(todo.md.length, 5);
+    assert.strictEqual(todo.md[0], '- [ ] Task 1');
+    assert.strictEqual(todo.md[1], '- [x] Task 2');
+    assert.strictEqual(todo.md[2], '- [ ] Task 3');
+    assert.strictEqual(todo.md[3], '- [x] Task 4');
+    assert.strictEqual(todo.md[4], '- [ ] Task 5');
   });
 
   it('do should mark a task', function () {
@@ -70,6 +79,14 @@ describe('todo API functions', function () {
     assert.strictEqual(todo.md[0], '- [x] Task 1');
     assert.strictEqual(todo.md[1], '- [x] Task 2');
     assert.strictEqual(todo.md[2], '- [x] Task 3');
+    assert.strictEqual(todo.md[3], '- [x] Task 4');
+  });
+
+  it('do should accept an out of bound index', function () {
+    assert(todo.do('1000') instanceof todo.Todo, 'Expected instance of Todo');
+    assert.strictEqual(todo.md[0], '- [ ] Task 1');
+    assert.strictEqual(todo.md[1], '- [x] Task 2');
+    assert.strictEqual(todo.md[2], '- [ ] Task 3');
     assert.strictEqual(todo.md[3], '- [x] Task 4');
   });
 
@@ -89,6 +106,14 @@ describe('todo API functions', function () {
     assert.strictEqual(todo.md[3], '- [ ] Task 4');
   });
 
+  it('undo should accept an out of bound index', function () {
+    assert(todo.undo('1000') instanceof todo.Todo, 'Expected instance of Todo');
+    assert.strictEqual(todo.md[0], '- [ ] Task 1');
+    assert.strictEqual(todo.md[1], '- [x] Task 2');
+    assert.strictEqual(todo.md[2], '- [ ] Task 3');
+    assert.strictEqual(todo.md[3], '- [x] Task 4');
+  });
+
   it('rm should remove a task', function () {
     assert(todo.rm(2) instanceof todo.Todo, 'Expected instance of Todo');
     assert.strictEqual(todo.md.length, 3);
@@ -101,6 +126,14 @@ describe('todo API functions', function () {
     assert(todo.rm('1,3-4') instanceof todo.Todo, 'Expected instance of Todo');
     assert.strictEqual(todo.md.length, 1);
     assert.strictEqual(todo.md[0], '- [x] Task 2');
+  });
+
+  it('rm should accept an out of bound index', function () {
+    assert(todo.rm('1000') instanceof todo.Todo, 'Expected instance of Todo');
+    assert.strictEqual(todo.md[0], '- [ ] Task 1');
+    assert.strictEqual(todo.md[1], '- [x] Task 2');
+    assert.strictEqual(todo.md[2], '- [ ] Task 3');
+    assert.strictEqual(todo.md[3], '- [x] Task 4');
   });
 
   it('move should move a task when from > to', function () {
@@ -117,6 +150,23 @@ describe('todo API functions', function () {
     assert.strictEqual(todo.md[1], '- [ ] Task 3');
     assert.strictEqual(todo.md[2], '- [x] Task 4');
     assert.strictEqual(todo.md[3], '- [ ] Task 1');
+  });
+
+  it('move should accept out of bounds from index', function () {
+    assert(todo.move(10,2) instanceof todo.Todo, 'Expected instance of Todo');
+    assert.strictEqual(todo.md[0], '- [ ] Task 1');
+    assert.strictEqual(todo.md[1], '- [x] Task 2');
+    assert.strictEqual(todo.md[2], '- [ ] Task 3');
+    assert.strictEqual(todo.md[3], '- [x] Task 4');
+  });
+
+
+  it('move should accept out of bounds to index', function () {
+    assert(todo.move(2,10) instanceof todo.Todo, 'Expected instance of Todo');
+    assert.strictEqual(todo.md[0], '- [ ] Task 1');
+    assert.strictEqual(todo.md[1], '- [ ] Task 3');
+    assert.strictEqual(todo.md[2], '- [x] Task 4');
+    assert.strictEqual(todo.md[3], '- [x] Task 2');
   });
 
 });
