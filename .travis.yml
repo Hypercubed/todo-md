@@ -5,4 +5,4 @@ node_js:
 before_install:
   - npm update npm -g
 before_script:
-  - npm install -g mocha
+  - npm install -g grunt-cli

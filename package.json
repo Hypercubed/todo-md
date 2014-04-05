@@ -20,7 +20,7 @@
     "grunt": "^0.4.4"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "grunt mochaTest"
   },
   "author": {
     "name": "Jayson Harshbarger",
