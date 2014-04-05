@@ -68,3 +68,6 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [x] jshint
 - [x] Fix indentions
 - [ ] Filesystem mocks?
+- [ ] Chained actions should not change indecies.  (ie todo.add('A', 1).rm(1); should replace)
+- [ ] Test indecies out of bounds for each command
+- [ ] Move should take accept a list for from (i.e. mv 1-5 10)

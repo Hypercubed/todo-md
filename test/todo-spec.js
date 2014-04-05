@@ -103,7 +103,20 @@ describe('todo API functions', function () {
     assert.strictEqual(todo.md[0], '- [x] Task 2');
   });
 
+  it('move should move a task when from > to', function () {
+    assert(todo.move(4,1) instanceof todo.Todo, 'Expected instance of Todo');
+    assert.strictEqual(todo.md[0], '- [x] Task 4');
+    assert.strictEqual(todo.md[1], '- [ ] Task 1');
+    assert.strictEqual(todo.md[2], '- [x] Task 2');
+    assert.strictEqual(todo.md[3], '- [ ] Task 3');
+  });
 
-
+  it('move should move a task when to > from', function () {
+    assert(todo.move(1,4) instanceof todo.Todo, 'Expected instance of Todo');
+    assert.strictEqual(todo.md[0], '- [x] Task 2');
+    assert.strictEqual(todo.md[1], '- [ ] Task 3');
+    assert.strictEqual(todo.md[2], '- [x] Task 4');
+    assert.strictEqual(todo.md[3], '- [ ] Task 1');
+  });
 
 });
