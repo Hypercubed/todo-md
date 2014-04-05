@@ -11,6 +11,7 @@ var mkdirp = require('mkdirp');
 var fs = require('fs');
 
 describe('todo bin', function(){
+
   var cmd = 'node '+path.join(__dirname, '../bin/todo')+' ';
 
   mkdirp(path.join(__dirname, 'temp'));

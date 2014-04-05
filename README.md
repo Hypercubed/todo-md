@@ -3,8 +3,7 @@ todo-md [![Build Status](https://secure.travis-ci.org/Hypercubed/todo-md.png?bra
 
 # Description
 
-Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments) from the command line.  A simple (but useful?) example built using [autocmdr](https://github.com/Hypercubed/autocmdr).
-
+Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments) from the command line.  A simple (but useful) example built using [autocmdr](https://github.com/Hypercubed/autocmdr).
 
 # Introduction
 
@@ -17,6 +16,13 @@ I use todo-md all the time.  I hope you find it useful as well.  Feedback is wel
 Install todo-md globally
 
     $ npm install -g Hypercubed/todo-md
+
+## Autocomplete (optional)
+
+Do one of the following to enable auto-completion in your shell.
+
+* Add completion helper to ~/.bashrc (or ~/.zshrc) `todo completion >> ~/.bashrc`
+* Add completion to current shell `. <(todo completion)`
 
 # Quick start
 
@@ -60,27 +66,25 @@ Note that `do`, `undo`, and `rm` require an index while `list` and `add` the ind
 
   Commands:
 
-                 list [index]  Displays all (or specified) lines in todo list with line numbers
-                print [index]  Displays all (or specified) lines in todo list without line numbers (same as list --no-color --no-stats --no-line-numbers)
+    list [index]               Displays all (or specified) lines in todo list with line numbers
+    print [index]              Displays all (or specified) lines in todo list without line numbers (same as list --no-color --no-stats --no-line-numbers)
     add <text_to_add> [index]  Adds text_to_add to your todo file on its own line at [index] or EOF if no index provided    
-                   do <index>  Marks task as done
-                 undo <index>  Marks task as not done
-                   rm <index>  Removes tasks
-                       status  Shows the tasks status (total, done, pending)
+    do <index>                 Marks task as done
+    undo <index>               Marks task as not done
+    rm <index>                 Removes tasks
+    mv <from> <to>             Moves task <from> to <to>
+    status                     Shows the tasks status (total, done, pending)
 
   Options:
 
-    -h, --help    output usage information
-    -d, --debug   enable debugger
-    -g, --global  use global todo list (usually ~/todo.md)
+    -h, --help             Output usage information
+    -d, --debug            Enable debugger
+    -g, --global           Use global todo list (usually ~/todo.md)
     -N, --no-line-numbers  Disable line numbers
-
-## Autocomplete
-
-Do one of the following to enable auto-completion in your shell.
-
-* Add completion helper to ~/.bashrc (or ~/.zshrc) `todo completion >> ~/.bashrc`
-* Add completion to current shell `. <(todo completion)`
+    -C, --no-color         Disable line numbers
+    -S, --no-stats         Disable stats
+    -q, --quiet            Quiet mode
+    -V, --version          output the version number
 
 # Todo
 
