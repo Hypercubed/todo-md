@@ -4,9 +4,9 @@
 /* global describe */
 /* global beforeEach */
 
-var assert = require('assert');
+//var assert = require('assert');
 var path = require('path');
-var should = require('should');
+require('should');
 
 describe('todo API', function () {
   var todo = require('../');
@@ -16,7 +16,7 @@ describe('todo API', function () {
   });
 
   it('should start empty', function () {
-    todo.md.should.be.empty;
+    todo.md.should.eql([]);
   });
 });
 
@@ -24,150 +24,123 @@ describe('todo API functions', function () {
 
   var todo = require('../');
 
+  var _md;
+
+  var fixture = [
+    '# Heading',
+    '',
+    '- [ ] Line 3',
+    '- [x] Line 4',
+    '- [ ] Line 5',
+    '- [x] Line 6'
+  ];
+
   beforeEach(function(){
-    process.chdir(path.join(__dirname));
-    todo.load('./fixtures/todo.md');
+    _md = fixture.slice(0);
+    todo.md = fixture.slice(0);
   });
 
   it('should load from file', function () {
-    todo.md.should.have.lengthOf(4);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
+    process.chdir(path.join(__dirname));
+    todo.load('./fixtures/todo.md');
+    todo.md.should.eql(_md);
   });
 
-  it('add should create new tasks and return index', function () {
-    todo.add('Task 5').should.be.exactly(5);
-    todo.md.should.have.lengthOf(5);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
-    todo.md[4].should.be.exactly('- [ ] Task 5');
+  it('todo.add should create new tasks and return index', function () {
+    todo.add('New').should.be.exactly(7);
+    _md.push('- [ ] New');
+    todo.md.should.eql(_md);
   });
 
-  it('add should accept an index', function () {
-    todo.add('Task 5',3).should.be.exactly(3);
-    todo.md.should.have.lengthOf(5);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 5');
-    todo.md[3].should.be.exactly('- [ ] Task 3');
-    todo.md[4].should.be.exactly('- [x] Task 4');
+  it('todo.add should accept an index', function () {
+    todo.add('New',3).should.be.exactly(3);
+    _md.splice(2, 0, '- [ ] New');
+    todo.md.should.eql(_md);
   });
 
-  it('add should accept an out of bound index', function () {  // Should it pad?
-    todo.add('Task 5',10).should.be.exactly(5);
-    todo.md.should.have.lengthOf(5);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
-    todo.md[4].should.be.exactly('- [ ] Task 5');
+  it('todo.add should accept an out of bound index', function () {  // Should it pad?
+    todo.add('New',10).should.be.exactly(7);
+    todo.md.should.have.lengthOf(7);
+    _md.push('- [ ] New');
+    todo.md.should.eql(_md);
   });
 
-  it('do should mark a task', function () {
-    todo.do(3).should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [x] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
+  it('todo.do should mark a task', function () {
+    todo.do(5).should.be.an.instanceOf(todo.Todo);
+    _md[4] = _md[4].replace('- [ ]','- [x]');
+    todo.md.should.eql(_md);
   });
 
-  it('do should work with lists', function () {
-    todo.do('1,3-4').should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [x] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [x] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
+  it('todo.do should work with lists', function () {
+    todo.do('3-4').should.be.an.instanceOf(todo.Todo);
+    _md[2] = _md[2].replace('- [ ]','- [x]');
+    _md[3] = _md[3].replace('- [ ]','- [x]');
+    todo.md.should.eql(_md);
   });
 
-  it('do should accept an out of bound index', function () {
-    todo.do('1000').should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
+  it('todo.do should accept an out of bound index', function () {
+    todo.do(10).should.be.an.instanceOf(todo.Todo);
+    todo.md.should.eql(_md);
   });
 
-  it('undo should unmark a task', function () {
-    todo.undo(2).should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [ ] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
+  it('todo.undo should unmark a task', function () {
+    todo.undo(4).should.be.an.instanceOf(todo.Todo);
+    _md[3] = _md[3].replace('- [x]','- [ ]');
+    todo.md.should.eql(_md);
   });
 
-  it('undo should work with lists', function () {
+  it('todo.undo should work with lists', function () {
     todo.undo('3-4').should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 3');
-    todo.md[3].should.be.exactly('- [ ] Task 4');
+    _md[2] = _md[2].replace('- [x]','- [ ]');
+    _md[3] = _md[3].replace('- [x]','- [ ]');
+    todo.md.should.eql(_md);
   });
 
-  it('undo should accept an out of bound index', function () {
-    todo.undo('1000').should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
+  it('todo.undo should accept an out of bound index', function () {
+    todo.undo(10).should.be.an.instanceOf(todo.Todo);
+    todo.md.should.eql(_md);
   });
 
-  it('rm should remove a task', function () {
-    todo.rm(2).should.be.an.instanceOf(todo.Todo);
-    todo.md.should.have.lengthOf(3);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [ ] Task 3');
-    todo.md[2].should.be.exactly('- [x] Task 4');
+  it('todo.rm should remove a task', function () {
+    todo.rm(4).should.be.an.instanceOf(todo.Todo);
+    _md.splice(3, 1);
+    todo.md.should.eql(_md);
   });
 
-  it('rm should work with lists', function () {
-    todo.rm('1,3-4').should.be.an.instanceOf(todo.Todo);
-    todo.md.should.have.lengthOf(1);
-    todo.md[0].should.be.exactly('- [x] Task 2');
+  it('todo.rm should work with lists', function () {
+    todo.rm('3,5-6').should.be.an.instanceOf(todo.Todo);
+    _md.splice(4, 2);
+    _md.splice(2, 1);
+    todo.md.should.eql(_md);
   });
 
-  it('rm should accept an out of bound index', function () {
-    todo.rm('1000').should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
+  it('todo.rm should accept an out of bound index', function () {
+    todo.rm(10).should.be.an.instanceOf(todo.Todo);
+    todo.md.should.eql(_md);
   });
 
-  it('move should move a task when from > to', function () {
-    todo.move(4,1).should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [x] Task 4');
-    todo.md[1].should.be.exactly('- [ ] Task 1');
-    todo.md[2].should.be.exactly('- [x] Task 2');
-    todo.md[3].should.be.exactly('- [ ] Task 3');
+  it('todo.move should move a task when from > to', function () {
+    todo.move(6,3).should.be.an.instanceOf(todo.Todo);
+    _md.splice(2, 0, _md.splice(5, 1)[0]);
+    todo.md.should.eql(_md);
   });
 
-  it('move should move a task when to > from', function () {
-    todo.move(1,4).should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [x] Task 2');
-    todo.md[1].should.be.exactly('- [ ] Task 3');
-    todo.md[2].should.be.exactly('- [x] Task 4');
-    todo.md[3].should.be.exactly('- [ ] Task 1');
+  it('todo.move should move a task when to > from', function () {
+    todo.move(3,6).should.be.an.instanceOf(todo.Todo);
+    _md.push(_md.splice(2, 1)[0]);
+    todo.md.should.eql(_md);
   });
 
-  it('move should accept out of bounds from index', function () {
+  it('todo.move should accept out of bounds from index', function () {
     todo.move(10,2).should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [x] Task 2');
-    todo.md[2].should.be.exactly('- [ ] Task 3');
-    todo.md[3].should.be.exactly('- [x] Task 4');
+    todo.md.should.eql(_md);
   });
 
 
-  it('move should accept out of bounds to index', function () {
-    todo.move(2,10).should.be.an.instanceOf(todo.Todo);
-    todo.md[0].should.be.exactly('- [ ] Task 1');
-    todo.md[1].should.be.exactly('- [ ] Task 3');
-    todo.md[2].should.be.exactly('- [x] Task 4');
-    todo.md[3].should.be.exactly('- [x] Task 2');
+  it('todo.move should accept out of bounds to index', function () {
+    todo.move(4,10).should.be.an.instanceOf(todo.Todo);
+    _md.push(_md.splice(3, 1)[0]);
+    todo.md.should.eql(_md);
   });
 
 });
