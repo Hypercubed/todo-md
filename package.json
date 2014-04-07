@@ -1,6 +1,6 @@
 {
   "name": "todo-md",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "todo-md",
   "main": "lib/todo.js",
   "bin": {
@@ -17,7 +17,9 @@
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-mocha-test": "~0.10.0",
     "grunt-release": "~0.7.0",
-    "grunt": "^0.4.4"
+    "grunt": "^0.4.4",
+    "should": "^3.2.0",
+    "nixt": "~0.3.0"
   },
   "scripts": {
     "test": "grunt mochaTest"
@@ -32,7 +34,10 @@
     "url": "https://github.com/Hypercubed/todo-md.git"
   },
   "keywords": [
-    "node"
+    "node",
+    "todo",
+    "cli",
+    "markdown"
   ],
   "license": "MIT",
   "bugs": "https://github.com/Hypercubed/todo-md/issues"

@@ -3,8 +3,8 @@
 _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 
 ### Priority
-- [ ] Finish -o
-- [ ] Improved tests
+- [ ] Finish -o, -i
+- [ ] Improved cli tests
 - [ ] Fix config
 - [ ] filters (done, pending,etc)
 
@@ -13,7 +13,7 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] -i to set input file (default: cwd+todo.md), use - for stdin
 - [ ] -o to set output file (default: cwd+todo.md), use - for stdin
 - [x] -g to set input file to global default
-- [ ] -  to toggle console (stderr) echo
+- [ ] -? to toggle console (stderr) echo
 
 ### Commands:
 
@@ -64,11 +64,13 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Handle extra marks (X,x,-,A,B,C, etc), prioities
 - [x] add --no-color option
 - [ ] Tagging (`todo add "Test #urgent"`, `todo list #urgent`)
-- [ ] Move all console.logs to program not lib
+- [ ] Move all console.logs to program not lib?
 - [x] jshint
 - [x] Fix indentions
 - [ ] Filesystem mocks?
-- [ ] Chained actions should not change indecies.  (ie todo.add('A', 1).rm(1); should replace)
-- [ ] Test indecies out of bounds for each command
+- [ ] Chained actions should not change indecies?  (ie todo.add('A', 1).rm(1); should replace)
+- [x] Test indecies out of bounds for each command
 - [ ] Move should take accept a list for from (i.e. mv 1-5 10)
 - [ ] Add mv to readme
+- [ ] config default command
+- [ ] config colors
