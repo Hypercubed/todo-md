@@ -20,8 +20,8 @@ module.exports = function (program) {
         .list(index);
 
       if (!!program.stats) {
-        todo  
-          .stats();        
+        todo
+          .stats();
       }
 
     });
