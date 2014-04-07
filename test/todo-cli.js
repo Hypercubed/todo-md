@@ -10,99 +10,228 @@ var path = require('path');
 var mkdirp = require('mkdirp');
 var fs = require('fs');
 
+var nixt = require('nixt');
+
 describe('todo bin', function(){
 
   var cmd = 'node '+path.join(__dirname, '../bin/todo')+' ';
+  var tempPath = path.join(__dirname, 'temp');
+  var todofile = path.join(tempPath, 'todo.md');
 
-  mkdirp(path.join(__dirname, 'temp'));
+  mkdirp(tempPath);
 
-  var todofile = path.join(__dirname, 'temp/todo.md');
+  var baseText = ['# Heading',
+                  '',
+                  '- [ ] Line 3',
+                  '- [x] Line 4',
+                  '- [ ] Line 5',
+                  '- [x] Line 6'
+                ].join('\n');
 
-  if (fs.existsSync(todofile)) {
-    fs.unlinkSync(todofile);
+  function cli() {
+    return nixt({colors: false})
+      .timeout(8000)
+      .cwd(tempPath)
+      .base(cmd)
+      .writeFile(todofile, baseText);
   }
 
-  beforeEach(function() {
-    process.chdir(path.join(__dirname, 'temp'));
-  });
+  it('--help should return usage', function(done) {
 
-  it('--help should run without errors', function(done) {
-    exec(cmd+'--help', function (error) {
-      assert(!error);
-      done();
-    });
-  });
-
-  it('--version should run without errors', function(done) {
-    exec(cmd+'--version', function (error) {
-      assert(!error);
-      done();
-    });
-  });
-
-  it('should NOT return error on missing command', function(done) {
-    this.timeout(4000);
-
-    exec(cmd, function (error) {
-      assert(!error);
-      done();
-    });
+    cli()
+      .run('--help')
+      .stdout(/Usage: todo/)
+      .stderr('')
+      .code(0)
+      .end(done);
 
   });
 
-  it('should NOT return error on unknown command', function(done) {
-    this.timeout(4000);
+  it('--version should return version', function(done) {
 
-    exec(cmd+'"A task"', function (error) {
-      assert(!error);
-      done();
-    });
-  });
-
-  it('should NOT return error on add command', function(done) {
-    this.timeout(4000);
-
-    exec(cmd+'add "Another task"', function (error) {
-      assert(!error);
-      done();
-    });
+    cli()
+      .run('--version')
+      .stdout(/[0-9].[0-9].[0-9]/)
+      .stderr('')
+      .code(0)
+      .end(done);
 
   });
 
-  it('should NOT return error on do command', function(done) {
-    this.timeout(4000);
+  it('should list when missing command', function(done) {
 
-    exec(cmd+'do 1,2-5', function (error) {
-      assert(!error);
-      done();
-    });
+    cli()
+      .run('')
+      .stdout(/# Heading/)
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .match(todofile, baseText)
+      .stderr('')
+      .code(0)
+      .end(done);
+
   });
 
-  it('should NOT return error on undo command', function(done) {
-    this.timeout(4000);
+  it('should print', function(done) {
 
-    exec(cmd+'undo 1,2-5', function (error) {
-      assert(!error);
-      done();
-    });
+    cli()
+      .run('print')
+      .stdout(baseText+'\n')
+      .stderr('')
+      .code(0)
+      .end(done);
+
   });
 
-  it('should NOT return error on rm command', function(done) {
-    this.timeout(4000);
+  it('should print status', function(done) {
 
-    exec(cmd+'rm 5-6', function (error) {
-      assert(!error);
-      done();
-    });
+    cli()
+      .run('status')
+      .stdout(/4 tasks, 2 done, 2 pending in/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
   });
 
-  it('should NOT return error on mv command', function(done) {
-    this.timeout(4000);
+  it('should add on unknown command', function(done) {
 
-    exec(cmd+'mv 5 6', function (error) {
-      assert(!error);
-      done();
-    });
+    cli()
+      .run('"New"')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .stdout(/   7 \| - \[ \] New/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
   });
+
+  /* it('should make new file', function(done) {
+
+    cli()
+      .unlink(tempPath)
+      .run('"New"')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .stdout(/   7 \| - \[ \] New/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  }); */
+
+  it('should return an error on unknown option', function(done) {
+
+    cli()
+      .run('--unknown')
+      .stdout('')
+      .stderr('')
+      .code(1)
+      .end(done);
+
+  });
+
+  it('should add a new task', function(done) {
+
+    cli()
+      .run('add "New"')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .stdout(/   7 \| - \[ \] New/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+    it('should add a new task with index', function(done) {
+
+    cli()
+      .run('add "New" 5')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] New/)
+      .stdout(/   6 \| - \[ \] Line 5/)
+      .stdout(/   7 \| - \[x\] Line 6/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should mark a task', function(done) {
+
+    cli()
+      .run('do 3-4,6')
+      .stdout(/   3 \| - \[x\] Line 3/)
+      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should unmark a task', function(done) {
+
+    cli()
+      .run('undo 3-4,5')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \| - \[ \] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should remove a task', function(done) {
+
+    cli()
+      .run('rm 5,3')
+      .stdout(/   3 \| - \[x\] Line 4/)
+      .stdout(/   4 \| - \[x\] Line 6/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should move tasks', function(done) {
+
+    cli()
+      .run('mv 3 5')
+      .stdout(/   3 \| - \[x\] Line 4/)
+      .stdout(/   4 \| - \[ \] Line 5/)
+      .stdout(/   5 \| - \[ \] Line 3/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should accept -q', function(done) {
+
+    cli()
+      .run('do 100 -q')
+      .stdout('')
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
 
 });
