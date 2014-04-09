@@ -14,7 +14,14 @@ var nixt = require('nixt');
 
 describe('todo bin', function(){
 
-  var cmd = 'node '+path.join(__dirname, '../bin/todo')+' ';
+  console.log(process.execPath);
+
+  var cmd = [path.join(__dirname, '../bin/todo'),''];
+
+  if (process.platform == 'win32') {
+    cmd.unshift('"'+process.execPath+'"');
+  }
+
   var tempPath = path.join(__dirname, 'temp');
   var todofile = path.join(tempPath, 'todo.md');
 
@@ -32,7 +39,7 @@ describe('todo bin', function(){
     return nixt({colors: false})
       .timeout(8000)
       .cwd(tempPath)
-      .base(cmd)
+      .base(cmd.join(' '))
       .writeFile(todofile, baseText);
   }
 
@@ -132,7 +139,7 @@ describe('todo bin', function(){
     cli()
       .run('--unknown')
       .stdout('')
-      .stderr('')
+      //.stderr('')  // Not consitant between dos and bash
       .code(1)
       .end(done);
 
