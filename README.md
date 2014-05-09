@@ -7,7 +7,7 @@ Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-ta
 
 # Introduction
 
-Todo-md is meant to be a dead simple text based task manager.  There are many task managers out there.  What makes todo-md different?  todo-md is, first of all, markdown based.  todo-md runs off the command line and the task list is stored in a simple markdown file.  Text based tasks list are easy to manage as part of a git repository.  Simply check-in your todo.md file along with your source code and readme file.  Also, like git and npm, todo-md by default works in the current working directory so each project can have it's own todo list.
+Todo-md is meant to be a dead simple text based task manager.  There are many task managers out there.  What makes todo-md different?  todo-md is, first of all, markdown based.  todo-md runs off the command line and the task list is stored in a simple markdown file.  Text based tasks list are easy to manage as part of a git repository.  Furthermore, the todo list is [gfm](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments) compatible for easy viewing in github and gist.  Simply check-in your todo.md file along with your source code and readme file.  Also, like git and npm, todo-md by default works in the current working directory so each project can have it's own todo list.
 
 I use todo-md all the time.  I hope you find it useful as well.  Feedback is welcome.
 
@@ -60,6 +60,11 @@ Note that `do`, `undo`, and `rm` require an index while `list` and `add` the ind
 
     $ todo do 15,20,25-30
 
+Adding the -g option flag to any command will set the working file to `~/todo/todo.md`.  Great for keeping a master todo list.  Try using [gistup](https://github.com/mbostock/gistup) to push to github gist for online task management:
+
+    cd ~/todo/todo.md
+    gistup --private -- todo.md
+
 ## Usage
 
   Usage: todo [options] [command]
@@ -79,7 +84,7 @@ Note that `do`, `undo`, and `rm` require an index while `list` and `add` the ind
 
     -h, --help             Output usage information
     -d, --debug            Enable debugger
-    -g, --global           Use global todo list (usually ~/todo.md)
+    -g, --global           Use global todo list (usually ~/todo/todo.md)
     -N, --no-line-numbers  Disable line numbers
     -C, --no-color         Disable line numbers
     -S, --no-stats         Disable stats
