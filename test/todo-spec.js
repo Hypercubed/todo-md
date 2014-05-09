@@ -45,6 +45,7 @@ describe('todo API functions', function () {
       process.chdir(path.join(__dirname));
       todo.load('./fixtures/todo.md');
       todo.md.should.eql(_md);
+      process.chdir('..');
     });
 
     it('should handle missing file', function () {
@@ -54,6 +55,7 @@ describe('todo API functions', function () {
                             '',
                             '_\\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \\)_',
                             '' ]);
+      process.chdir('..');
     });
   });
 
