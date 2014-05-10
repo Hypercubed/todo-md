@@ -1,6 +1,6 @@
 {
   "name": "todo-md",
-  "version": "0.0.10",
+  "version": "0.0.9",
   "description": "Manage your GitHub Flavored Markdown Task List from the command line",
   "main": "lib/todo.js",
   "bin": {
