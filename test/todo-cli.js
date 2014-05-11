@@ -11,12 +11,12 @@ var mkdirp = require('mkdirp');
 
 var nixt = require('nixt');
 
-describe('todo bin', function(){
+describe('todo bin', function () {
 
-  var cmd = [path.join(__dirname, '../bin/todo'),''];
+  var cmd = [path.join(__dirname, '../bin/todo'), ''];
 
   if (process.platform === 'win32') {
-    cmd.unshift('"'+process.execPath+'"');
+    cmd.unshift('"' + process.execPath + '"');
   }
 
   var tempPath = path.join(__dirname, 'temp');
@@ -40,7 +40,7 @@ describe('todo bin', function(){
       .writeFile(todofile, baseText);
   }
 
-  it('--help should return usage', function(done) {  // Causing error on Travis CI... don't know why
+  it('--help should return usage', function (done) {  // Causing error on Travis CI... don't know why
 
     cli()
       .run('--help')
@@ -51,7 +51,7 @@ describe('todo bin', function(){
 
   });
 
-  it('--version should return version', function(done) {
+  it('--version should return version', function (done) {
 
     cli()
       .run('--version')
@@ -62,7 +62,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should list when missing command', function(done) {
+  it('should list when missing command', function (done) {
 
     cli()
       .run('')
@@ -78,7 +78,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should print', function(done) {
+  it('should print', function (done) {
 
     cli()
       .run('print')
@@ -89,7 +89,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should print status', function(done) {
+  it('should print status', function (done) {
 
     cli()
       .run('status')
@@ -100,7 +100,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should add on unknown command', function(done) {
+  it('should add on unknown command', function (done) {
 
     cli()
       .run('"New"')
@@ -131,7 +131,7 @@ describe('todo bin', function(){
 
   }); */
 
-  it('should return an error on unknown option', function(done) {
+  it('should return an error on unknown option', function (done) {
 
     cli()
       .run('--unknown')
@@ -142,7 +142,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should add a new task', function(done) {
+  it('should add a new task', function (done) {
 
     cli()
       .run('add "New"')
@@ -157,7 +157,7 @@ describe('todo bin', function(){
 
   });
 
-    it('should add a new task with index', function(done) {
+    it('should add a new task with index', function (done) {
 
     cli()
       .run('add "New" 5')
@@ -172,7 +172,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should mark a task', function(done) {
+  it('should mark a task', function (done) {
 
     cli()
       .run('do 3-4,6')
@@ -186,7 +186,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should unmark a task', function(done) {
+  it('should unmark a task', function (done) {
 
     cli()
       .run('undo 3-4,5')
@@ -200,7 +200,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should remove a task', function(done) {
+  it('should remove a task', function (done) {
 
     cli()
       .run('rm 5,3')
@@ -212,7 +212,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should move tasks', function(done) {
+  it('should move tasks', function (done) {
 
     cli()
       .run('mv 3 5')
@@ -226,7 +226,7 @@ describe('todo bin', function(){
 
   });
 
-  it('should accept -q', function(done) {
+  it('should accept -q', function (done) {
 
     cli()
       .run('do 100 -q')
