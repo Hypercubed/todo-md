@@ -12,13 +12,13 @@ module.exports = function (program) {
     .action(function(text, index, opts) {
 
       var idx = todo
-          .options(program)
-          .load()
-          .add(text, index);
+        .options(program)
+        .load()
+        .add(text, index);
 
       if (opts.done) {
-          todo
-            .do(idx);
+        todo
+          .do(idx);
       }
 
       todo

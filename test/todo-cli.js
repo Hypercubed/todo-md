@@ -157,7 +157,22 @@ describe('todo bin', function () {
 
   });
 
-    it('should add a new task with index', function (done) {
+  it('should add a new task, with done flag', function (done) {
+
+    cli()
+      .run('add "New" --done')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .stdout(/   7 \| - \[x\] New/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should add a new task with index', function (done) {
 
     cli()
       .run('add "New" 5')

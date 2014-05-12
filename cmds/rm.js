@@ -20,7 +20,7 @@ module.exports = function (program) {
         todo.list();
 
         if (!!program.stats) {
-          todo.stats();        
+          todo.stats();
         }
       }
 

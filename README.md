@@ -1,4 +1,4 @@
-todo-md [![Build Status](https://secure.travis-ci.org/Hypercubed/todo-md.png?branch=master)](https://travis-ci.org/Hypercubed/todo-md) [![NPM version](https://badge.fury.io/js/todo-md.png)](http://badge.fury.io/js/todo-md)
+todo-md [![Build Status](https://secure.travis-ci.org/Hypercubed/todo-md.png?branch=master)](https://travis-ci.org/Hypercubed/todo-md) [![NPM version](https://badge.fury.io/js/todo-md.png)](http://badge.fury.io/js/todo-md) [![Code Climate](https://codeclimate.com/github/Hypercubed/todo-md.png)](https://codeclimate.com/github/Hypercubed/todo-md)
 ======
 
 # Description
