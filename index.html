@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>todo-md</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+        <h1 id="todo-md-build-status-https-secure-travis-ci-org-hypercubed-todo-md-png-branch-master-https-travis-ci-org-hypercubed-todo-md-npm-version-https-badge-fury-io-js-todo-md-png-http-badge-fury-io-js-todo-md-code-climate-https-codeclimate-com-github-hypercubed-todo-md-png-https-codeclimate-com-github-hypercubed-todo-md-">todo-md <a href="https://travis-ci.org/Hypercubed/todo-md"><img src="https://secure.travis-ci.org/Hypercubed/todo-md.png?branch=master" alt="Build Status"></a> <a href="http://badge.fury.io/js/todo-md"><img src="https://badge.fury.io/js/todo-md.png" alt="NPM version"></a> <a href="https://codeclimate.com/github/Hypercubed/todo-md"><img src="https://codeclimate.com/github/Hypercubed/todo-md.png" alt="Code Climate"></a></h1>
+<h1 id="description">Description</h1>
+<p>Manage your <a href="https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments">GitHub Flavored Markdown Task List</a> from the command line.  A simple (but useful) example built using <a href="https://github.com/Hypercubed/autocmdr">autocmdr</a>.</p>
+<h1 id="introduction">Introduction</h1>
+<p>Todo-md is meant to be a dead simple text based task manager.  There are many task managers out there.  What makes todo-md different?  todo-md is, first of all, markdown based.  todo-md runs off the command line and the task list is stored in a simple markdown file.  Text based tasks list are easy to manage as part of a git repository.  Furthermore, the todo list is <a href="https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments">gfm</a> compatible for easy viewing in github and gist.  Simply check-in your todo.md file along with your source code and readme file.  Also, like git and npm, todo-md by default works in the current working directory so each project can have it&#39;s own todo list.</p>
+<p>I use todo-md all the time.  I hope you find it useful as well.  Feedback is welcome.</p>
+<h1 id="installation">Installation</h1>
+<p>Install todo-md globally</p>
+<pre><code>$ npm install -g Hypercubed/todo-md</code></pre>
+<h2 id="autocomplete-optional-">Autocomplete (optional)</h2>
+<p>Do one of the following to enable auto-completion in your shell.</p>
+<ul>
+<li>Add completion helper to ~/.bashrc (or ~/.zshrc) <code>todo completion &gt;&gt; ~/.bashrc</code></li>
+<li>Add completion to current shell <code>. &lt;(todo completion)</code></li>
+</ul>
+<h1 id="quick-start">Quick start</h1>
+<p>Creating a todo list is done simply by adding your first task.  For example </p>
+<pre><code>$ todo &quot;Learn to use task-md&quot;</code></pre>
+<p>will create a <code>todo.md</code> file in the current directory containing a single line:</p>
+<pre><code>   - [ ] Learn to use task-md</code></pre>
+<p>Note that when adding tasks the <code>add</code> command is optional.  You can also type <code>todo add &quot;Learn to use task-md&quot;</code>.</p>
+<p>To mark a task as done type</p>
+<pre><code>$ todo do 1</code></pre>
+<p>or undo</p>
+<pre><code>$ todo undo 1</code></pre>
+<p>To remove a task</p>
+<pre><code>$ todo rm 1</code></pre>
+<p>After each command you will see a list of your tasks along with line numbers.  You can also get the list at anytime by typing</p>
+<pre><code>$ todo</code></pre>
+<p>Note that the command <code>list</code> is optional you may also type <code>todo list</code>.</p>
+<p>Note that <code>do</code>, <code>undo</code>, and <code>rm</code> require an index while <code>list</code> and <code>add</code> the index is optional.  With the exception of the <code>add</code> command this index can be a single line number (as displayed when running <code>todo list</code>) or a list of line numbers.  Ranges may also be used.  For example the following command will mark line 15,20, and 25-30 as done.</p>
+<pre><code>$ todo do 15,20,25-30</code></pre>
+<p>Adding the -g option flag to any command will set the working file to <code>~/todo/todo.md</code>.  Great for keeping a master todo list.  Try using <a href="https://github.com/mbostock/gistup">gistup</a> to push to github gist for online task management:</p>
+<pre><code>cd ~/todo/todo.md
+gistup --private -- todo.md</code></pre>
+<h2 id="usage">Usage</h2>
+<p>  Usage: todo [options] [command]</p>
+<p>  Commands:</p>
+<pre><code>list [index]               Displays all (or specified) lines in todo list with line numbers
+print [index]              Displays all (or specified) lines in todo list without line numbers (same as list --no-color --no-stats --no-line-numbers)
+add &lt;text_to_add&gt; [index]  Adds text_to_add to your todo file on its own line at [index] or EOF if no index provided    
+do &lt;index&gt;                 Marks task as done
+undo &lt;index&gt;               Marks task as not done
+rm &lt;index&gt;                 Removes tasks
+mv &lt;from&gt; &lt;to&gt;             Moves task &lt;from&gt; to &lt;to&gt;
+status                     Shows the tasks status (total, done, pending)</code></pre>
+<p>  Options:</p>
+<pre><code>-h, --help             Output usage information
+-d, --debug            Enable debugger
+-g, --global           Use global todo list (usually ~/todo/todo.md)
+-N, --no-line-numbers  Disable line numbers
+-C, --no-color         Disable line numbers
+-S, --no-stats         Disable stats
+-q, --quiet            Quiet mode
+-V, --version          output the version number</code></pre>
+<h1 id="todo">Todo</h1>
+<p>See todo.md (managed using <a href="https://github.com/Hypercubed/todo-md">todo-md</a>)</p>
+<h1 id="license">License</h1>
+<p>Copyright (c) 2013 Jayson Harshbarger
+<a href="http://en.wikipedia.org/wiki/MIT_License">MIT License</a></p>
+<h1 id="acknowledgments">Acknowledgments</h1>
+<p>Built using <a href="https://github.com/Hypercubed/generator-commander">generator-commader</a> and <a href="https://github.com/Hypercubed/autocmdr">autocmdr</a>.</p>
+
+      </div>
+    </div>
+  </body>
+</html>
