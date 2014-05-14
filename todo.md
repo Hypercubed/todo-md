@@ -74,3 +74,4 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] Add mv to readme
 - [ ] config default command
 - [ ] config colors
+- [ ] finish gh-pages
