@@ -15,7 +15,12 @@ module.exports = function (program) {
       var idx = todo
         .options(program)
         .load()
-        .add(text, index, opts.indent);
+        .add(text, index);
+
+      if (opts.indent) {
+        todo
+          .indent(idx, +opts.indent);
+      }
 
       if (opts.done) {
         todo

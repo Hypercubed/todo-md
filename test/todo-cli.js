@@ -205,12 +205,56 @@ describe('todo bin', function () {
   it('should add a new task with index, with indent', function (done) {
 
     cli()
-      .run('add "New" --indent 1')
+      .run('add "New" -I')
       .stdout(/   3 \| - \[ \] Line 3/)
       .stdout(/   4 \|   - \[x\] Line 4/)
       .stdout(/   5 \| - \[ \] Line 5/)
       .stdout(/   6 \| - \[x\] Line 6/)
       .stdout(/   7 \|   - \[ \] New/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should add a new task with index, with explicit indent', function (done) {
+
+    cli()
+      .run('add "New" --indent 2')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .stdout(/   7 \|     - \[ \] New/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should indent a task', function (done) {
+
+    cli()
+      .run('indent 3-4,6 1')
+      .stdout(/# Heading/)
+      .stdout(/   3 \|   - \[ \] Line 3/)
+      .stdout(/   4 \|     - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \|   - \[x\] Line 6/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should unindent a task', function (done) {
+
+    cli()
+      .run('unindent 4 1')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
       .stderr('')
       .code(0)
       .end(done);

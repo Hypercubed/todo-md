@@ -76,3 +76,4 @@ _\( managed using [todo-md](https://github.com/Hypercubed/todo-md) \)_
 - [ ] config colors
 - [ ] finish gh-pages
 - [ ] finish indent level cli
+- [ ] new

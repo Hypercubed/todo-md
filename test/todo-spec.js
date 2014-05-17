@@ -98,15 +98,62 @@ describe('todo API functions', function () {
       todo.md.should.eql(_md);
     });
 
-    it('should accept an indent level', function () {
-      todo.add('New',null,1).should.be.exactly(7);
-      _md.push('  - [ ] New');
+  });
+
+  describe('todo.indent', function () {
+    it('should indent a task', function () {
+      todo.indent(5,true).should.be.an.instanceOf(todo.Todo);
+      _md[4] = _md[4].replace(/^[^\[]+/,'  - ');
       todo.md.should.eql(_md);
     });
 
-    it('should accept an indent level', function () {
-      todo.add('New',null,2).should.be.exactly(7);
-      _md.push('    - [ ] New');
+    it('should indent a task by n', function () {
+      todo.indent(5,2).should.be.an.instanceOf(todo.Todo);
+      _md[4] = _md[4].replace(/^[^\[]+/,'    - ');
+      todo.md.should.eql(_md);
+    });
+
+    it('should indent a task by -n', function () {
+      todo.indent(5,-2).should.be.an.instanceOf(todo.Todo);
+      _md[4] = _md[4].replace(/^[^\[]+/,'- ');
+      todo.md.should.eql(_md);
+    });
+
+    it('should add to existing indent', function () {
+      todo.indent(4,true).should.be.an.instanceOf(todo.Todo);
+      _md[3] = _md[3].replace(/^[^\[]+/,'    - ');
+      todo.md.should.eql(_md);
+    });
+
+    it('should add to existing indent by n', function () {
+      todo.indent(4,2).should.be.an.instanceOf(todo.Todo);
+      _md[3] = _md[3].replace(/^[^\[]+/,'      - ');
+      todo.md.should.eql(_md);
+    });
+
+    it('should add to existing indent by -n', function () {
+      todo.indent(4,-1).should.be.an.instanceOf(todo.Todo);
+      _md[3] = _md[3].replace(/^[^\[]+/,'- ');
+      todo.md.should.eql(_md);
+    });
+
+    it('should add to existing indent by -n', function () {
+      todo.indent(4,-2).should.be.an.instanceOf(todo.Todo);
+      _md[3] = _md[3].replace(/^[^\[]+/,'- ');
+      todo.md.should.eql(_md);
+    });
+
+    it('should indent a range', function () {
+      todo.indent('3-4',true).should.be.an.instanceOf(todo.Todo);
+      _md[2] = _md[2].replace(/^[^\[]+/,'  - ');
+      _md[3] = _md[3].replace(/^[^\[]+/,'    - ');
+      todo.md.should.eql(_md);
+    });
+
+    it('should indent a range by n', function () {
+      todo.indent('3-4',2).should.be.an.instanceOf(todo.Todo);
+      _md[2] = _md[2].replace(/^[^\[]+/,'    - ');
+      _md[3] = _md[3].replace(/^[^\[]+/,'      - ');
       todo.md.should.eql(_md);
     });
 
