@@ -1,6 +1,8 @@
 todo-md [![Build Status](https://secure.travis-ci.org/Hypercubed/todo-md.png?branch=master)](https://travis-ci.org/Hypercubed/todo-md) [![NPM version](https://badge.fury.io/js/todo-md.png)](http://badge.fury.io/js/todo-md) [![Code Climate](https://codeclimate.com/github/Hypercubed/todo-md.png)](https://codeclimate.com/github/Hypercubed/todo-md)
 ======
 
+[![NPM](https://nodei.co/npm/todo-md.png?downloads=true)](https://nodei.co/npm/todo-md/)
+
 # Description
 
 Manage your [GitHub Flavored Markdown Task List](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments) from the command line.  A simple (but useful) example built using [autocmdr](https://github.com/Hypercubed/autocmdr).
@@ -26,7 +28,7 @@ Do one of the following to enable auto-completion in your shell.
 
 # Quick start
 
-Creating a todo list is done simply by adding your first task.  For example 
+Creating a todo list is done simply by adding your first task.  For example
 
     $ todo "Learn to use task-md"
 
@@ -73,7 +75,7 @@ Adding the -g option flag to any command will set the working file to `~/todo/to
 
     list [index]               Displays all (or specified) lines in todo list with line numbers
     print [index]              Displays all (or specified) lines in todo list without line numbers (same as list --no-color --no-stats --no-line-numbers)
-    add <text_to_add> [index]  Adds text_to_add to your todo file on its own line at [index] or EOF if no index provided    
+    add <text_to_add> [index]  Adds text_to_add to your todo file on its own line at [index] or EOF if no index provided
     do <index>                 Marks task as done
     undo <index>               Marks task as not done
     rm <index>                 Removes tasks
