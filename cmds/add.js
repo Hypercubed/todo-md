@@ -9,12 +9,13 @@ module.exports = function (program) {
     .command('add <text_to_add> [index]')  // TODO: Push to index, to section
     .description('Adds text_to_add to your todo file on its own line.')
     .option('-D, --done')
+    .option('-I, --indent [level]')
     .action(function(text, index, opts) {
 
       var idx = todo
         .options(program)
         .load()
-        .add(text, index);
+        .add(text, index, opts.indent);
 
       if (opts.done) {
         todo

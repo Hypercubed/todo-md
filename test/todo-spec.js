@@ -30,7 +30,7 @@ describe('todo API functions', function () {
     '# Heading',
     '',
     '- [ ] Line 3',
-    '- [x] Line 4',
+    '  - [x] Line 4',
     '- [ ] Line 5',
     '- [x] Line 6'
   ];
@@ -80,8 +80,14 @@ describe('todo API functions', function () {
     });
 
     it('should accept an index', function () {
-      todo.add('New',3).should.be.exactly(3);
-      _md.splice(2, 0, '- [ ] New');
+      todo.add('New',4).should.be.exactly(4);
+      _md.splice(3, 0, '- [ ] New');
+      todo.md.should.eql(_md);
+    });
+
+    it('should accept an index, with matching indent', function () {
+      todo.add('New',5).should.be.exactly(5);
+      _md.splice(4, 0, '  - [ ] New');
       todo.md.should.eql(_md);
     });
 
@@ -89,6 +95,18 @@ describe('todo API functions', function () {
       todo.add('New',10).should.be.exactly(7);
       todo.md.should.have.lengthOf(7);
       _md.push('- [ ] New');
+      todo.md.should.eql(_md);
+    });
+
+    it('should accept an indent level', function () {
+      todo.add('New',null,1).should.be.exactly(7);
+      _md.push('  - [ ] New');
+      todo.md.should.eql(_md);
+    });
+
+    it('should accept an indent level', function () {
+      todo.add('New',null,2).should.be.exactly(7);
+      _md.push('    - [ ] New');
       todo.md.should.eql(_md);
     });
 

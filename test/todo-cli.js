@@ -27,7 +27,7 @@ describe('todo bin', function () {
   var baseText = ['# Heading',
                   '',
                   '- [ ] Line 3',
-                  '- [x] Line 4',
+                  '  - [x] Line 4',
                   '- [ ] Line 5',
                   '- [x] Line 6'
                 ].join('\n');
@@ -68,7 +68,7 @@ describe('todo bin', function () {
       .run('')
       .stdout(/# Heading/)
       .stdout(/   3 \| - \[ \] Line 3/)
-      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
       .stdout(/   5 \| - \[ \] Line 5/)
       .stdout(/   6 \| - \[x\] Line 6/)
       .match(todofile, baseText)
@@ -105,7 +105,7 @@ describe('todo bin', function () {
     cli()
       .run('"New"')
       .stdout(/   3 \| - \[ \] Line 3/)
-      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
       .stdout(/   5 \| - \[ \] Line 5/)
       .stdout(/   6 \| - \[x\] Line 6/)
       .stdout(/   7 \| - \[ \] New/)
@@ -121,7 +121,7 @@ describe('todo bin', function () {
       .unlink(tempPath)
       .run('"New"')
       .stdout(/   3 \| - \[ \] Line 3/)
-      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
       .stdout(/   5 \| - \[ \] Line 5/)
       .stdout(/   6 \| - \[x\] Line 6/)
       .stdout(/   7 \| - \[ \] New/)
@@ -147,7 +147,7 @@ describe('todo bin', function () {
     cli()
       .run('add "New"')
       .stdout(/   3 \| - \[ \] Line 3/)
-      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
       .stdout(/   5 \| - \[ \] Line 5/)
       .stdout(/   6 \| - \[x\] Line 6/)
       .stdout(/   7 \| - \[ \] New/)
@@ -162,7 +162,7 @@ describe('todo bin', function () {
     cli()
       .run('add "New" --done')
       .stdout(/   3 \| - \[ \] Line 3/)
-      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
       .stdout(/   5 \| - \[ \] Line 5/)
       .stdout(/   6 \| - \[x\] Line 6/)
       .stdout(/   7 \| - \[x\] New/)
@@ -175,12 +175,42 @@ describe('todo bin', function () {
   it('should add a new task with index', function (done) {
 
     cli()
+      .run('add "New" 6')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[ \] New/)
+      .stdout(/   7 \| - \[x\] Line 6/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should add a new task with index, with proper indent', function (done) {
+
+    cli()
       .run('add "New" 5')
       .stdout(/   3 \| - \[ \] Line 3/)
-      .stdout(/   4 \| - \[x\] Line 4/)
-      .stdout(/   5 \| - \[ \] New/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
+      .stdout(/   5 \|   - \[ \] New/)
       .stdout(/   6 \| - \[ \] Line 5/)
       .stdout(/   7 \| - \[x\] Line 6/)
+      .stderr('')
+      .code(0)
+      .end(done);
+
+  });
+
+  it('should add a new task with index, with indent', function (done) {
+
+    cli()
+      .run('add "New" --indent 1')
+      .stdout(/   3 \| - \[ \] Line 3/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
+      .stdout(/   5 \| - \[ \] Line 5/)
+      .stdout(/   6 \| - \[x\] Line 6/)
+      .stdout(/   7 \|   - \[ \] New/)
       .stderr('')
       .code(0)
       .end(done);
@@ -192,7 +222,7 @@ describe('todo bin', function () {
     cli()
       .run('do 3-4,6')
       .stdout(/   3 \| - \[x\] Line 3/)
-      .stdout(/   4 \| - \[x\] Line 4/)
+      .stdout(/   4 \|   - \[x\] Line 4/)
       .stdout(/   5 \| - \[ \] Line 5/)
       .stdout(/   6 \| - \[x\] Line 6/)
       .stderr('')
@@ -206,7 +236,7 @@ describe('todo bin', function () {
     cli()
       .run('undo 3-4,5')
       .stdout(/   3 \| - \[ \] Line 3/)
-      .stdout(/   4 \| - \[ \] Line 4/)
+      .stdout(/   4 \|   - \[ \] Line 4/)
       .stdout(/   5 \| - \[ \] Line 5/)
       .stdout(/   6 \| - \[x\] Line 6/)
       .stderr('')
@@ -219,7 +249,7 @@ describe('todo bin', function () {
 
     cli()
       .run('rm 5,3')
-      .stdout(/   3 \| - \[x\] Line 4/)
+      .stdout(/   3 \|   - \[x\] Line 4/)
       .stdout(/   4 \| - \[x\] Line 6/)
       .stderr('')
       .code(0)
@@ -231,7 +261,7 @@ describe('todo bin', function () {
 
     cli()
       .run('mv 3 5')
-      .stdout(/   3 \| - \[x\] Line 4/)
+      .stdout(/   3 \|   - \[x\] Line 4/)
       .stdout(/   4 \| - \[ \] Line 5/)
       .stdout(/   5 \| - \[ \] Line 3/)
       .stdout(/   6 \| - \[x\] Line 6/)
