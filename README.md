@@ -1,5 +1,6 @@
 todo-md [![Build Status](https://secure.travis-ci.org/Hypercubed/todo-md.png?branch=master)](https://travis-ci.org/Hypercubed/todo-md) [![NPM version](https://badge.fury.io/js/todo-md.png)](http://badge.fury.io/js/todo-md) [![Code Climate](https://codeclimate.com/github/Hypercubed/todo-md.png)](https://codeclimate.com/github/Hypercubed/todo-md)
 ======
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Hypercubed/todo-md?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![NPM](https://nodei.co/npm/todo-md.png?downloads=true)](https://nodei.co/npm/todo-md/)
 
