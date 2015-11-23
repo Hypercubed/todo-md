@@ -6,6 +6,11 @@
   "bin": {
     "todo": "./bin/todo"
   },
+  "files": [
+    "bin",
+    "lib",
+    "cmds"
+  ],
   "dependencies": {
     "commander": "~2.0.0",
     "autocmdr": "~0.0.2",
