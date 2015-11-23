@@ -12,9 +12,9 @@
     "cmds"
   ],
   "dependencies": {
-    "commander": "~2.0.0",
-    "autocmdr": "~0.0.2",
-    "colors": "~0.6.0-1"
+    "autocmdr": "0.0.8",
+    "colors": "^0.6.2",
+    "commander": "^2.9.0"
   },
   "devDependencies": {
     "assemble": "~0.4.37",
