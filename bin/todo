@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-var program  = require('commander');
+var program = require('commander');
 
 require('autocmdr/lib/logger')(program);
 require('autocmdr/lib/loader')(program);
@@ -9,15 +9,15 @@ require('autocmdr/lib/completion')(program);
 require('autocmdr/lib/package')(program);
 require('autocmdr/lib/config')(program);
 
-program.option('-g, --global','use global todo list (usually ~/todo.md)');
+program.option('-g, --global', 'use global todo list (usually ~/todo.md)');
 
 program
-  .on('*', function(cmds) {
+  .on('*', function (cmds) {
     program.parse(['', '', 'add'].concat(cmds));
   });
 
 program.parse(process.argv);
 
-if (program.args.length < 1 ) {
+if (program.args.length < 1) {
   program.parse(['', '', 'list']);
 }

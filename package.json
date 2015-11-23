@@ -17,22 +17,19 @@
     "colors": "~0.6.0-1"
   },
   "devDependencies": {
-    "mkdirp": "~0.3.5",
-    "load-grunt-tasks": "~0.4.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-mocha-test": "~0.10.0",
-    "grunt-release": "^0.7.0",
-    "grunt": "^0.4.4",
-    "should": "^3.2.0",
-    "nixt": "~0.3.0",
-    "grunt-contrib-watch": "^0.6.1",
     "assemble": "~0.4.37",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-gh-pages": "~0.9.1",
-    "grunt-contrib-copy": "~0.5.0"
+    "dependency-check": "^2.5.1",
+    "load-grunt-tasks": "~0.4.0",
+    "mkdirp": "~0.3.5",
+    "mocha": "^2.3.4",
+    "nixt": "~0.3.0",
+    "semistandard": "^7.0.3",
+    "should": "^3.2.0"
   },
   "scripts": {
-    "test": "grunt mochaTest"
+    "test": "mocha -R spec",
+    "lint": "semistandard",
+    "check": "npm run lint && npm run test && dependency-check ."
   },
   "author": {
     "name": "Jayson Harshbarger",

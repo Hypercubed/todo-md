@@ -8,22 +8,19 @@ module.exports = function (program) {
   program
     .command('mv <from> <to>')
     .description('Move a task')
-    .action(function(from,to) {
-
+    .action(function (from, to) {
       todo
         .options(program)
         .load()
-        .move(from,to)
+        .move(from, to)
         .write();
 
       if (!program.quiet) {
         todo.list();
 
-        if (!!program.stats) {
+        if (program.stats) {
           todo.stats();
         }
       }
-
     });
-
 };

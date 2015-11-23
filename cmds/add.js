@@ -10,8 +10,7 @@ module.exports = function (program) {
     .description('Adds text_to_add to your todo file on its own line.')
     .option('-D, --done')
     .option('-I, --indent [level]')
-    .action(function(text, index, opts) {
-
+    .action(function (text, index, opts) {
       var idx = todo
         .options(program)
         .load()
@@ -33,11 +32,9 @@ module.exports = function (program) {
       if (!program.quiet) {
         todo.list();
 
-        if (!!program.stats) {
+        if (program.stats) {
           todo.stats();
         }
       }
-
     });
-
 };

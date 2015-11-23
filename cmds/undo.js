@@ -8,8 +8,7 @@ module.exports = function (program) {
   program
     .command('undo <index>')
     .description('Marks task(s) as not done')
-    .action(function(index) {
-
+    .action(function (index) {
       todo
         .options(program)
         .load()
@@ -19,11 +18,9 @@ module.exports = function (program) {
       if (!program.quiet) {
         todo.list();
 
-        if (!!program.stats) {
+        if (program.stats) {
           todo.stats();
         }
       }
-
     });
-
 };
