@@ -1,5 +1,8 @@
 todo-md [![Build Status](https://secure.travis-ci.org/Hypercubed/todo-md.png?branch=master)](https://travis-ci.org/Hypercubed/todo-md) [![NPM version](https://badge.fury.io/js/todo-md.png)](http://badge.fury.io/js/todo-md) [![Code Climate](https://codeclimate.com/github/Hypercubed/todo-md.png)](https://codeclimate.com/github/Hypercubed/todo-md)
 ======
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Hypercubed/todo-md?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+[![NPM](https://nodei.co/npm/todo-md.png?downloads=true)](https://nodei.co/npm/todo-md/)
 
 # Description
 
@@ -26,7 +29,7 @@ Do one of the following to enable auto-completion in your shell.
 
 # Quick start
 
-Creating a todo list is done simply by adding your first task.  For example 
+Creating a todo list is done simply by adding your first task.  For example
 
     $ todo "Learn to use task-md"
 
@@ -73,7 +76,7 @@ Adding the -g option flag to any command will set the working file to `~/todo/to
 
     list [index]               Displays all (or specified) lines in todo list with line numbers
     print [index]              Displays all (or specified) lines in todo list without line numbers (same as list --no-color --no-stats --no-line-numbers)
-    add <text_to_add> [index]  Adds text_to_add to your todo file on its own line at [index] or EOF if no index provided    
+    add <text_to_add> [index]  Adds text_to_add to your todo file on its own line at [index] or EOF if no index provided
     do <index>                 Marks task as done
     undo <index>               Marks task as not done
     rm <index>                 Removes tasks
@@ -97,8 +100,8 @@ See todo.md (managed using [todo-md](https://github.com/Hypercubed/todo-md))
 
 # License
 
-Copyright (c) 2013 Jayson Harshbarger [![Gittip donate button](http://badgr.co/gittip/hypercubed.png)](https://www.gittip.com/hypercubed/ "Donate weekly to this project using Gittip")
-[![Paypal donate button](http://badgr.co/paypal/donate.png?bg=%23feb13d)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X7KYR6T9U2NHC "One time donation to this project using Paypal")
+Copyright (c) 2013 Jayson Harshbarger [![Gittip donate button](http://img.shields.io/gratipay/Hypercubed.svg)](https://www.gittip.com/hypercubed/ "Donate weekly to this project using Gittip")
+[![Paypal donate button](http://img.shields.io/badge/paypal-donate-brightgreen.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X7KYR6T9U2NHC "One time donation to this project using Paypal")
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
